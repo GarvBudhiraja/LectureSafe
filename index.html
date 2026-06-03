@@ -5,17 +5,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>BunkMate</title>
+  <title>LectureSafe</title>
 
   <meta
     name="description"
-    content="BunkMate is a safe, private, and student-friendly attendance planner."
+    content="LectureSafe is a private, responsive attendance planning tool that helps students calculate attendance, safe zones, and classes needed to reach their attendance target."
   />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="dark-mode">
+  <!-- Decorative background only. No tracking, no external scripts. -->
   <div class="bg-grid"></div>
   <div class="noise-layer"></div>
   <div class="orb orb-1"></div>
@@ -24,15 +25,15 @@
 
   <header class="topbar">
     <nav class="nav-card">
-      <a href="#" class="brand">
-        <span class="brand-logo">B</span>
-        <span class="brand-text">BunkMate</span>
+      <a href="#" class="brand" aria-label="LectureSafe Home">
+        <span class="brand-logo">L</span>
+        <span class="brand-text">LectureSafe</span>
       </a>
 
       <div class="nav-actions">
         <span class="safe-chip">Private Calculator</span>
 
-        <button id="themeToggle" class="theme-btn" type="button">
+        <button id="themeToggle" class="theme-btn" type="button" aria-label="Toggle dark and light mode">
           <span id="themeIcon">☀️</span>
           <span id="themeText">Light</span>
         </button>
@@ -41,21 +42,23 @@
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-center">
         <div class="hero-badge">
           <span class="live-dot"></span>
-          Safe attendance planning for students
+          Private attendance planning for students
         </div>
 
         <h1>
-          BunkMate
+          LectureSafe
           <span>Attendance Planner</span>
         </h1>
 
         <p class="hero-subtitle">
-          Check your attendance status, safe zone, missed classes, safe misses,
-          and the number of classes needed to reach your target — all inside your browser.
+          A simple and private tool to calculate your attendance percentage,
+          understand your safe zone, check how many classes you can still miss,
+          and know how many classes you need to attend to reach your target.
         </p>
 
         <div class="hero-points">
@@ -70,53 +73,58 @@
           </div>
 
           <div class="point-card">
-            <strong>Instant Math</strong>
-            <span>Fast and simple results</span>
+            <strong>Instant Result</strong>
+            <span>Fast attendance calculation</span>
           </div>
 
           <div class="point-card">
             <strong>Mobile Ready</strong>
-            <span>Works on every screen</span>
+            <span>Works on phones and tablets</span>
           </div>
         </div>
 
-       <button id="startPlanningBtn" class="hero-btn" type="button">
-  Start Planning
-  <span>↓</span>
-</button>
+        <button id="startPlanningBtn" class="hero-btn" type="button">
+          Start Planning
+          <span>↓</span>
+        </button>
       </div>
     </section>
 
+    <!-- Motivation Strip -->
     <section class="motivation-strip">
       <div class="motivation-track">
         <span>Plan smart, not careless.</span>
+        <span>Use official records for best accuracy.</span>
         <span>Stay ahead of attendance stress.</span>
-        <span>Official records are always final.</span>
-        <span>Small planning can prevent big problems.</span>
+        <span>Your data never leaves your browser.</span>
       </div>
     </section>
 
+    <!-- Calculator Section -->
     <section id="calculator" class="calculator-section">
       <div class="section-heading">
-        <p>BunkMate Calculator</p>
+        <p>LectureSafe Calculator</p>
         <h2>Enter your attendance details</h2>
         <span>
-          Enter your real attendance numbers and get a clear result instantly.
+          Add your college or university attendance criteria and current lecture count to get a clear result.
         </span>
       </div>
 
       <div class="calculator-shell">
+        <!-- Form Card -->
         <form id="attendanceForm" class="form-card" novalidate>
           <div class="card-heading">
             <div>
               <p>Input Panel</p>
-              <h3>Your Details</h3>
+              <h3>Your Attendance Data</h3>
             </div>
             <span>Step 1</span>
           </div>
 
           <div class="input-group">
-            <label for="requiredPercentage">Required attendance percentage</label>
+            <label for="requiredPercentage">
+              Minimum attendance criteria set by your college/university
+            </label>
             <input
               id="requiredPercentage"
               type="number"
@@ -128,7 +136,7 @@
           </div>
 
           <div class="input-group">
-            <label for="totalHeld">Total classes held till now</label>
+            <label for="totalHeld">Total lectures/classes held so far</label>
             <input
               id="totalHeld"
               type="number"
@@ -139,7 +147,7 @@
           </div>
 
           <div class="input-group">
-            <label for="attended">Classes attended till now</label>
+            <label for="attended">Lectures/classes attended so far</label>
             <input
               id="attended"
               type="number"
@@ -153,7 +161,7 @@
 
           <div class="button-row">
             <button id="calculateBtn" class="calculate-btn" type="submit">
-              <span class="btn-text">Calculate</span>
+              <span class="btn-text">Calculate Attendance</span>
               <span class="btn-loader"></span>
             </button>
 
@@ -163,13 +171,15 @@
           </div>
 
           <div class="privacy-box">
-            <strong>🔐 Privacy Safe</strong>
+            <strong>Privacy Safe</strong>
             <p>
               Your data stays in your browser. No login. No API. No tracking.
+              LectureSafe is a fully client-side attendance helper.
             </p>
           </div>
         </form>
 
+        <!-- Result Card -->
         <section id="resultCard" class="result-card waiting" aria-live="polite">
           <div class="card-heading">
             <div>
@@ -187,7 +197,7 @@
 
           <div class="progress-area">
             <div class="progress-top">
-              <span>Progress</span>
+              <span>Attendance Progress</span>
               <strong id="progressLabel">0%</strong>
             </div>
 
@@ -198,34 +208,35 @@
 
           <div class="stats-grid">
             <div class="stat-card">
-              <span>Already missed</span>
+              <span>Classes missed so far</span>
               <strong id="missedClasses">--</strong>
             </div>
 
             <div class="stat-card">
-              <span>Safe misses from now</span>
+              <span>Classes you can still miss</span>
               <strong id="safeMisses">--</strong>
             </div>
 
             <div class="stat-card wide">
-              <span>Classes needed to reach target</span>
+              <span>Classes needed to reach your target</span>
               <strong id="neededClasses">--</strong>
             </div>
           </div>
 
           <div id="adviceBox" class="advice-box">
-            Tip: Check your official attendance portal before entering values here.
+            Tip: Use your official attendance portal numbers for the most accurate result.
           </div>
         </section>
       </div>
     </section>
 
+    <!-- Info Section -->
     <section class="info-section">
       <div class="info-card">
         <span>01</span>
         <h3>Safe Zone</h3>
         <p>
-          Your current attendance is equal to or above the required percentage.
+          Your current attendance is equal to or above the minimum attendance criteria.
         </p>
       </div>
 
@@ -233,7 +244,7 @@
         <span>02</span>
         <h3>Warning Zone</h3>
         <p>
-          Your attendance is close to the target, but you should attend upcoming classes.
+          Your attendance is close to the target, so attending upcoming classes is recommended.
         </p>
       </div>
 
@@ -241,24 +252,25 @@
         <span>03</span>
         <h3>Danger Zone</h3>
         <p>
-          Your attendance is below the safe range and needs recovery.
+          Your attendance is below the safe range and needs consistent recovery.
         </p>
       </div>
     </section>
 
+    <!-- Disclaimer -->
     <section class="disclaimer-section">
       <div class="disclaimer-card">
         <h2>Important Disclaimer</h2>
         <p>
-          BunkMate is only a helper. Final attendance depends on official
-          university or college records. Use this tool for responsible planning.
+          LectureSafe is only an attendance planning helper. Final attendance depends on official
+          university or college records. Use this tool for responsible planning only.
         </p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>BunkMate • Safe static frontend project • HTML CSS JavaScript only</p>
+    <p>LectureSafe • Designed & built by Garv Budhiraja • HTML CSS JavaScript</p>
   </footer>
 
   <script src="script.js"></script>
