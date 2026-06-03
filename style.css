@@ -41,6 +41,13 @@ body.dark-mode {
   box-sizing: border-box;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -50,7 +57,6 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -73,6 +79,18 @@ summary {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+main,
+header,
+footer,
+.hero-section,
+.calculator-section,
+.info-section,
+.disclaimer-section,
+.motivation-strip {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Background */
@@ -184,7 +202,9 @@ a {
 }
 
 .brand-text {
-  letter-spacing: -0.04em;
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .nav-actions {
@@ -226,7 +246,7 @@ a {
   min-height: calc(100vh - 90px);
   width: min(100% - 28px, 1120px);
   margin: 0 auto;
-  padding: 54px 0 60px;
+  padding: 48px 0 60px;
 
   display: grid;
   place-items: center;
@@ -260,34 +280,68 @@ a {
   box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.14);
 }
 
-.hero-center h1 {
+/* New clean LectureSafe heading */
+.hero-title {
   margin: 28px auto 0;
   max-width: 1000px;
-  font-size: clamp(4.2rem, 13vw, 10rem);
-  line-height: 0.82;
-  letter-spacing: -0.095em;
-  font-weight: 1000;
+  line-height: 0.95;
+  text-align: center;
+  font-weight: 850;
+  letter-spacing: -0.035em;
   animation: fadeUp 0.7s ease 0.08s both;
 }
 
-.hero-center h1 span {
-  display: block;
-  margin-top: 20px;
-  font-size: clamp(1.7rem, 5.3vw, 4.4rem);
-  letter-spacing: -0.06em;
+.title-main,
+.title-accent {
+  display: inline-block;
+  font-size: clamp(4.1rem, 11vw, 8.8rem);
+  line-height: 0.95;
+}
+
+.title-main {
+  color: var(--text);
+  font-weight: 850;
+}
+
+.title-accent {
+  margin-left: 0.08em;
+  font-weight: 850;
   background: linear-gradient(135deg, var(--primary), var(--blue), var(--cyan));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+.hero-title small {
+  display: block;
+  margin-top: 18px;
+  font-size: clamp(1.35rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .hero-subtitle {
-  margin: 28px auto 0;
+  margin: 24px auto 0;
   max-width: 800px;
   color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.22rem);
-  line-height: 1.8;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.75;
   animation: fadeUp 0.7s ease 0.16s both;
+}
+
+.name-note {
+  max-width: 680px;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  font-weight: 700;
+  animation: fadeUp 0.7s ease 0.2s both;
 }
 
 .hero-points {
@@ -327,7 +381,7 @@ a {
 }
 
 .hero-btn {
-  margin-top: 36px;
+  margin-top: 34px;
   border: 0;
   display: inline-flex;
   align-items: center;
@@ -955,193 +1009,18 @@ body.dark-mode .input-group input {
 /* Mobile */
 @media (max-width: 600px) {
   .topbar {
-    padding: 12px;
+    padding: 12px 10px;
     padding-top: max(12px, env(safe-area-inset-top));
-  }
-
-  .nav-card {
-    border-radius: 24px;
-  }
-
-  .safe-chip {
-    display: none;
-  }
-
-  .brand-logo {
-    width: 36px;
-    height: 36px;
-  }
-
-  .theme-btn {
-    padding: 9px 11px;
-  }
-
-  .hero-section {
-    width: min(100% - 22px, 1120px);
-    padding-top: 58px;
-  }
-
-  .hero-center h1 {
-    font-size: clamp(3.35rem, 17vw, 5.8rem);
-    letter-spacing: -0.08em;
-  }
-
-  .hero-center h1 span {
-    font-size: clamp(1.35rem, 7vw, 2.4rem);
-  }
-
-  .hero-subtitle {
-    font-size: 0.98rem;
-    line-height: 1.65;
-  }
-
-  .hero-points,
-  .calculator-shell,
-  .stats-grid,
-  .info-section {
-    grid-template-columns: 1fr;
-  }
-
-  .form-card,
-  .result-card {
-    grid-column: span 1;
-    padding: 18px;
-    border-radius: 24px;
-  }
-
-  .calculator-section,
-  .info-section,
-  .disclaimer-section,
-  .motivation-strip {
-    width: min(100% - 22px, 1120px);
-  }
-
-  .calculator-shell {
-    padding: 12px;
-    border-radius: 28px;
-  }
-
-  .card-heading {
-    flex-direction: column;
-  }
-
-  .card-heading > span {
-    width: fit-content;
-  }
-
-  .button-row {
-    flex-direction: column;
-  }
-
-  .stat-card.wide {
-    grid-column: span 1;
-  }
-
-  .main-result strong {
-    font-size: clamp(3.2rem, 17vw, 5rem);
-  }
-
-  .orb {
-    animation: none;
-    opacity: 0.32;
-  }
-
-  .motivation-track {
-    animation-duration: 34s;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 430px) {
-  .hero-center h1 {
-    font-size: clamp(3rem, 17vw, 4.8rem);
-  }
-
-  .hero-center h1 span {
-    font-size: clamp(1.2rem, 6.7vw, 2rem);
-  }
-
-  .result-card::after {
-    display: none;
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-/* =========================
-   LectureSafe Mobile Polish Fix
-   Fix: horizontal movement, title clarity, phone spacing
-========================= */
-
-/* Strong horizontal scroll fix */
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* Prevent any large section from creating side scroll */
-main,
-header,
-footer,
-.hero-section,
-.calculator-section,
-.info-section,
-.disclaimer-section,
-.motivation-strip {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* Make brand cleaner */
-.brand-text {
-  font-size: 1.02rem;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-
-/* Make main title readable and premium */
-.hero-center h1 {
-  letter-spacing: -0.055em;
-  line-height: 0.9;
-  word-break: normal;
-  overflow-wrap: normal;
-}
-
-.hero-center h1 span {
-  margin-top: 14px;
-  letter-spacing: -0.035em;
-}
-
-/* Better hero spacing */
-.hero-section {
-  padding-top: 42px;
-}
-
-/* Mobile specific fix */
-@media (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .topbar {
-    padding-left: 10px;
-    padding-right: 10px;
   }
 
   .nav-card {
     width: 100%;
     padding: 10px 11px;
     border-radius: 22px;
+  }
+
+  .safe-chip {
+    display: none;
   }
 
   .brand {
@@ -1178,17 +1057,27 @@ footer,
     line-height: 1.35;
   }
 
-  .hero-center h1 {
+  .hero-title {
     margin-top: 22px;
-    font-size: clamp(3rem, 15.5vw, 4.85rem);
-    line-height: 0.92;
-    letter-spacing: -0.055em;
+    line-height: 1;
+    letter-spacing: -0.025em;
   }
 
-  .hero-center h1 span {
+  .title-main,
+  .title-accent {
+    font-size: clamp(3.1rem, 15vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+
+  .title-accent {
+    margin-left: 0.06em;
+  }
+
+  .hero-title small {
     margin-top: 12px;
-    font-size: clamp(1.25rem, 6.3vw, 2.05rem);
-    letter-spacing: -0.03em;
+    font-size: clamp(1.25rem, 6.4vw, 2.2rem);
+    letter-spacing: -0.025em;
   }
 
   .hero-subtitle {
@@ -1198,9 +1087,23 @@ footer,
     line-height: 1.62;
   }
 
+  .name-note {
+    width: min(94%, 680px);
+    margin-top: 14px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
   .hero-points {
     margin-top: 26px;
     gap: 12px;
+  }
+
+  .hero-points,
+  .calculator-shell,
+  .stats-grid,
+  .info-section {
+    grid-template-columns: 1fr;
   }
 
   .point-card {
@@ -1229,6 +1132,7 @@ footer,
 
   .form-card,
   .result-card {
+    grid-column: span 1;
     padding: 16px;
     border-radius: 22px;
   }
@@ -1244,8 +1148,24 @@ footer,
     line-height: 1.55;
   }
 
+  .card-heading {
+    flex-direction: column;
+  }
+
+  .card-heading > span {
+    width: fit-content;
+  }
+
   .input-group label {
     font-size: 0.95rem;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .stat-card.wide {
+    grid-column: span 1;
   }
 
   .main-result strong {
@@ -1260,17 +1180,21 @@ footer,
   .orb {
     display: none;
   }
+
+  .motivation-track {
+    animation-duration: 34s;
+  }
 }
 
-/* Very small phones like iPhone SE */
+/* Very small phones */
 @media (max-width: 390px) {
-  .hero-center h1 {
-    font-size: clamp(2.65rem, 14.5vw, 4.2rem);
-    letter-spacing: -0.045em;
+  .title-main,
+  .title-accent {
+    font-size: clamp(2.75rem, 14vw, 4.3rem);
   }
 
-  .hero-center h1 span {
-    font-size: clamp(1.08rem, 5.8vw, 1.75rem);
+  .hero-title small {
+    font-size: clamp(1.1rem, 5.8vw, 1.8rem);
   }
 
   .brand-text {
@@ -1280,5 +1204,20 @@ footer,
   .theme-btn {
     font-size: 0.82rem;
     padding: 8px 9px;
+  }
+
+  .result-card::after {
+    display: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
