@@ -328,3 +328,19 @@ if (startPlanningBtn) {
 }
 
 updateThemeButton();
+/* Mobile users should directly see the calculator first */
+function openCalculatorFirstOnMobile() {
+  const isMobile = window.innerWidth <= 700;
+  const calculatorSection = document.getElementById("calculator");
+
+  if (isMobile && calculatorSection) {
+    setTimeout(function () {
+      calculatorSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 500);
+  }
+}
+
+openCalculatorFirstOnMobile();
