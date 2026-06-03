@@ -9,14 +9,13 @@
 
   <meta
     name="description"
-    content="LectureSafe is a private, responsive attendance planning tool that helps students calculate attendance, safe zones, and classes needed to reach their attendance target."
+    content="LectureSafe is a private and responsive attendance planning tool for students."
   />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="dark-mode">
-  <!-- Background decoration only. No tracking. No external scripts. -->
   <div class="bg-grid"></div>
   <div class="noise-layer"></div>
   <div class="orb orb-1"></div>
@@ -31,9 +30,9 @@
       </a>
 
       <div class="nav-actions">
-        <span class="safe-chip">Private Calculator</span>
+        <span class="safe-chip">Private Planner</span>
 
-        <button id="themeToggle" class="theme-btn" type="button" aria-label="Toggle dark and light mode">
+        <button id="themeToggle" class="theme-btn" type="button">
           <span id="themeIcon">☀️</span>
           <span id="themeText">Light</span>
         </button>
@@ -42,12 +41,12 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero-section">
       <div class="hero-center">
         <div class="hero-badge">
           <span class="live-dot"></span>
-          Private attendance planning for students
+          Student-friendly attendance planning
         </div>
 
         <h1 class="hero-title">
@@ -56,12 +55,8 @@
         </h1>
 
         <p class="hero-subtitle">
-          A private student tool to plan attendance responsibly, check your safe zone,
-          and understand how many classes you need to attend to stay on track.
-        </p>
-
-        <p class="name-note">
-          Named and built by Garv Budhiraja to make attendance planning simple, private, and student-friendly.
+          Plan your attendance responsibly, check your safe zone, and understand
+          how many classes you need to attend to stay on track.
         </p>
 
         <div class="hero-points">
@@ -77,12 +72,12 @@
 
           <div class="point-card">
             <strong>Instant Result</strong>
-            <span>Fast attendance calculation</span>
+            <span>Fast calculation</span>
           </div>
 
           <div class="point-card">
             <strong>Mobile Ready</strong>
-            <span>Works on phones and tablets</span>
+            <span>Works on every screen</span>
           </div>
         </div>
 
@@ -93,7 +88,7 @@
       </div>
     </section>
 
-    <!-- Motivation Strip -->
+    <!-- Moving Strip -->
     <section class="motivation-strip">
       <div class="motivation-track">
         <span>Plan smart, not careless.</span>
@@ -103,18 +98,17 @@
       </div>
     </section>
 
-    <!-- Calculator Section -->
+    <!-- Calculator -->
     <section id="calculator" class="calculator-section">
       <div class="section-heading">
         <p>LectureSafe Calculator</p>
         <h2>Enter your attendance details</h2>
         <span>
-          Add your college or university attendance criteria and current lecture count to get a clear result.
+          Add your college or university attendance criteria and your current lecture count.
         </span>
       </div>
 
       <div class="calculator-shell">
-        <!-- Form Card -->
         <form id="attendanceForm" class="form-card" novalidate>
           <div class="card-heading">
             <div>
@@ -176,13 +170,11 @@
           <div class="privacy-box">
             <strong>Privacy Safe</strong>
             <p>
-              Your data stays in your browser. No login. No API. No tracking.
-              LectureSafe is a fully client-side attendance helper.
+              No login. No API. No tracking. Your attendance numbers are used only inside your browser.
             </p>
           </div>
         </form>
 
-        <!-- Result Card -->
         <section id="resultCard" class="result-card waiting" aria-live="polite">
           <div class="card-heading">
             <div>
@@ -233,7 +225,7 @@
       </div>
     </section>
 
-    <!-- Info Section -->
+    <!-- Info -->
     <section class="info-section">
       <div class="info-card">
         <span>01</span>
