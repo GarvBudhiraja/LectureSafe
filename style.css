@@ -1221,3 +1221,71 @@ body.dark-mode .input-group input {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   Mobile First Calculator View
+   Desktop same rahega, phone par calculator pehle dikhega
+========================= */
+
+@media (max-width: 600px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Mobile par calculator sabse pehle */
+  .calculator-section {
+    order: 1;
+    padding-top: 22px;
+    padding-bottom: 44px;
+  }
+
+  /* Hero mobile par neeche chala jayega */
+  .hero-section {
+    order: 5;
+    padding-top: 34px;
+    padding-bottom: 42px;
+  }
+
+  .motivation-strip {
+    order: 2;
+    margin-bottom: 34px;
+  }
+
+  .info-section {
+    order: 3;
+  }
+
+  .disclaimer-section {
+    order: 4;
+  }
+
+  .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .section-heading p {
+    font-size: 0.78rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.85rem, 9vw, 2.55rem);
+    line-height: 1;
+  }
+
+  .section-heading span {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .calculator-shell {
+    margin-top: 0;
+  }
+
+  .form-card {
+    order: 1;
+  }
+
+  .result-card {
+    order: 2;
+  }
+}
