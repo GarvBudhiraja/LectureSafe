@@ -1289,3 +1289,201 @@ body.dark-mode .input-group input {
     order: 2;
   }
 }
+/* =========================
+   LectureSafe Premium Mobile UI
+   Phone par calculator-first view ko branded + attractive banata hai
+========================= */
+
+@media (max-width: 600px) {
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(139, 92, 246, 0.35), transparent 32%),
+      radial-gradient(circle at top right, rgba(6, 182, 212, 0.25), transparent 34%),
+      linear-gradient(180deg, #070a16 0%, #0b1024 42%, #070a16 100%);
+  }
+
+  .calculator-section {
+    position: relative;
+    padding-top: 18px;
+  }
+
+  /* Mobile calculator ke upar mini branded intro */
+  .calculator-section::before {
+    content: "LectureSafe";
+    display: block;
+    width: fit-content;
+    margin: 0 auto 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 950;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--primary), var(--cyan));
+    box-shadow: 0 16px 42px rgba(139, 92, 246, 0.35);
+  }
+
+  .section-heading {
+    position: relative;
+    padding: 18px 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    background:
+      linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.10)),
+      rgba(15, 23, 42, 0.72);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+  }
+
+  .section-heading p {
+    color: #a78bfa;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+  }
+
+  .section-heading h2 {
+    margin-top: 8px;
+    font-size: clamp(2.05rem, 10.5vw, 3rem);
+    line-height: 0.96;
+    letter-spacing: -0.055em;
+  }
+
+  .section-heading span {
+    margin-top: 11px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .calculator-shell {
+    position: relative;
+    padding: 11px;
+    border-radius: 30px;
+    background:
+      linear-gradient(135deg, rgba(139, 92, 246, 0.24), rgba(6, 182, 212, 0.14)),
+      rgba(15, 23, 42, 0.72);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  }
+
+  .form-card,
+  .result-card {
+    border-radius: 25px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.055));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .card-heading {
+    margin-bottom: 18px;
+  }
+
+  .card-heading p {
+    color: #a78bfa;
+    font-size: 0.76rem;
+  }
+
+  .card-heading h3 {
+    font-size: 1.35rem;
+  }
+
+  .card-heading > span {
+    padding: 7px 11px;
+    font-size: 0.82rem;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .input-group label {
+    font-size: 0.93rem;
+    line-height: 1.45;
+  }
+
+  .input-group input {
+    min-height: 50px;
+    border-radius: 17px;
+    background: rgba(2, 6, 23, 0.58);
+  }
+
+  .calculate-btn {
+    min-height: 52px;
+    font-size: 0.98rem;
+    box-shadow: 0 18px 44px rgba(139, 92, 246, 0.34);
+  }
+
+  .reset-btn {
+    min-height: 50px;
+  }
+
+  .privacy-box {
+    border-radius: 20px;
+    background: rgba(139, 92, 246, 0.10);
+  }
+
+  .main-result {
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at top right, rgba(6, 182, 212, 0.18), transparent 45%),
+      rgba(255, 255, 255, 0.075);
+  }
+
+  .main-result span {
+    font-size: 0.9rem;
+  }
+
+  .main-result strong {
+    margin-top: 10px;
+    font-size: clamp(3.25rem, 16vw, 5rem);
+    letter-spacing: -0.075em;
+  }
+
+  .stats-grid {
+    gap: 11px;
+  }
+
+  .stat-card {
+    border-radius: 20px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
+  }
+
+  .stat-card span {
+    font-size: 0.86rem;
+  }
+
+  .stat-card strong {
+    font-size: 1.7rem;
+  }
+
+  .advice-box {
+    border-radius: 20px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .motivation-strip {
+    margin-top: 8px;
+  }
+
+  .hero-section {
+    margin-top: 20px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 390px) {
+  .calculator-section::before {
+    font-size: 0.92rem;
+    padding: 9px 15px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.85rem, 9.5vw, 2.55rem);
+  }
+
+  .main-result strong {
+    font-size: clamp(2.9rem, 15vw, 4.5rem);
+  }
+}
