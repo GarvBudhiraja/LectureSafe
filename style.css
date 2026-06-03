@@ -4,11 +4,9 @@
   --muted: #667085;
 
   --card: rgba(255, 255, 255, 0.72);
-  --card-strong: rgba(255, 255, 255, 0.88);
   --border: rgba(255, 255, 255, 0.7);
 
   --primary: #8b5cf6;
-  --primary-dark: #6d28d9;
   --blue: #2563eb;
   --cyan: #06b6d4;
 
@@ -26,11 +24,8 @@ body.dark-mode {
   --bg: #070a16;
   --text: #f8fafc;
   --muted: #b8c1d6;
-
-  --card: rgba(15, 23, 42, 0.72);
-  --card-strong: rgba(15, 23, 42, 0.9);
+  --card: rgba(15, 23, 42, 0.74);
   --border: rgba(148, 163, 184, 0.22);
-
   --shadow: 0 30px 100px rgba(0, 0, 0, 0.42);
 }
 
@@ -124,6 +119,7 @@ footer,
   border-radius: 999px;
   filter: blur(50px);
   opacity: 0.5;
+  pointer-events: none;
   animation: floatOrb 8s ease-in-out infinite alternate;
 }
 
@@ -234,7 +230,7 @@ footer,
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .theme-btn:hover {
@@ -247,7 +243,6 @@ footer,
   width: min(100% - 28px, 1120px);
   margin: 0 auto;
   padding: 48px 0 60px;
-
   display: grid;
   place-items: center;
 }
@@ -280,14 +275,12 @@ footer,
   box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.14);
 }
 
-/* New clean LectureSafe heading */
 .hero-title {
   margin: 28px auto 0;
   max-width: 1000px;
-  line-height: 0.95;
   text-align: center;
-  font-weight: 850;
-  letter-spacing: -0.035em;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
   animation: fadeUp 0.7s ease 0.08s both;
 }
 
@@ -296,16 +289,15 @@ footer,
   display: inline-block;
   font-size: clamp(4.1rem, 11vw, 8.8rem);
   line-height: 0.95;
+  font-weight: 850;
 }
 
 .title-main {
   color: var(--text);
-  font-weight: 850;
 }
 
 .title-accent {
-  margin-left: 0.08em;
-  font-weight: 850;
+  margin-left: 0.09em;
   background: linear-gradient(135deg, var(--primary), var(--blue), var(--cyan));
   -webkit-background-clip: text;
   background-clip: text;
@@ -317,7 +309,7 @@ footer,
   margin-top: 18px;
   font-size: clamp(1.35rem, 4.2vw, 3.4rem);
   line-height: 1.05;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary), var(--cyan));
   -webkit-background-clip: text;
@@ -327,21 +319,11 @@ footer,
 
 .hero-subtitle {
   margin: 24px auto 0;
-  max-width: 800px;
+  max-width: 790px;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.18rem);
   line-height: 1.75;
   animation: fadeUp 0.7s ease 0.16s both;
-}
-
-.name-note {
-  max-width: 680px;
-  margin: 16px auto 0;
-  color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.7;
-  font-weight: 700;
-  animation: fadeUp 0.7s ease 0.2s both;
 }
 
 .hero-points {
@@ -930,7 +912,7 @@ body.dark-mode .input-group input {
   color: var(--muted);
 }
 
-/* Common animations */
+/* Animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -970,7 +952,7 @@ body.dark-mode .input-group input {
 @media (max-width: 950px) {
   .hero-section {
     min-height: auto;
-    padding-top: 80px;
+    padding-top: 76px;
   }
 
   .hero-points,
@@ -979,23 +961,14 @@ body.dark-mode .input-group input {
     grid-template-columns: 1fr 1fr;
   }
 
-  .calculator-shell {
-    gap: 14px;
-  }
-
   .form-card,
   .result-card {
     grid-column: span 2;
   }
 }
 
-/* iPad polish */
+/* iPad */
 @media (min-width: 700px) and (max-width: 1100px) {
-  .hero-section {
-    min-height: auto;
-    padding-top: 86px;
-  }
-
   .calculator-shell {
     grid-template-columns: 1fr;
   }
@@ -1046,8 +1019,8 @@ body.dark-mode .input-group input {
 
   .hero-section {
     width: min(100% - 20px, 1120px);
-    padding-top: 38px;
-    padding-bottom: 42px;
+    padding-top: 42px;
+    padding-bottom: 48px;
     min-height: auto;
   }
 
@@ -1060,24 +1033,24 @@ body.dark-mode .input-group input {
   .hero-title {
     margin-top: 22px;
     line-height: 1;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.015em;
   }
 
   .title-main,
   .title-accent {
-    font-size: clamp(3.1rem, 15vw, 5rem);
+    font-size: clamp(3.05rem, 14.5vw, 4.85rem);
     line-height: 1;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.015em;
   }
 
   .title-accent {
-    margin-left: 0.06em;
+    margin-left: 0.055em;
   }
 
   .hero-title small {
-    margin-top: 12px;
-    font-size: clamp(1.25rem, 6.4vw, 2.2rem);
-    letter-spacing: -0.025em;
+    margin-top: 13px;
+    font-size: clamp(1.2rem, 6vw, 2.05rem);
+    letter-spacing: -0.02em;
   }
 
   .hero-subtitle {
@@ -1085,13 +1058,6 @@ body.dark-mode .input-group input {
     max-width: 95%;
     font-size: 0.96rem;
     line-height: 1.62;
-  }
-
-  .name-note {
-    width: min(94%, 680px);
-    margin-top: 14px;
-    font-size: 0.9rem;
-    line-height: 1.6;
   }
 
   .hero-points {
@@ -1190,11 +1156,11 @@ body.dark-mode .input-group input {
 @media (max-width: 390px) {
   .title-main,
   .title-accent {
-    font-size: clamp(2.75rem, 14vw, 4.3rem);
+    font-size: clamp(2.7rem, 13.8vw, 4.2rem);
   }
 
   .hero-title small {
-    font-size: clamp(1.1rem, 5.8vw, 1.8rem);
+    font-size: clamp(1.05rem, 5.6vw, 1.75rem);
   }
 
   .brand-text {
@@ -1219,271 +1185,5 @@ body.dark-mode .input-group input {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
-  }
-}
-/* =========================
-   Mobile First Calculator View
-   Desktop same rahega, phone par calculator pehle dikhega
-========================= */
-
-@media (max-width: 600px) {
-  main {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Mobile par calculator sabse pehle */
-  .calculator-section {
-    order: 1;
-    padding-top: 22px;
-    padding-bottom: 44px;
-  }
-
-  /* Hero mobile par neeche chala jayega */
-  .hero-section {
-    order: 5;
-    padding-top: 34px;
-    padding-bottom: 42px;
-  }
-
-  .motivation-strip {
-    order: 2;
-    margin-bottom: 34px;
-  }
-
-  .info-section {
-    order: 3;
-  }
-
-  .disclaimer-section {
-    order: 4;
-  }
-
-  .section-heading {
-    margin-bottom: 18px;
-  }
-
-  .section-heading p {
-    font-size: 0.78rem;
-  }
-
-  .section-heading h2 {
-    font-size: clamp(1.85rem, 9vw, 2.55rem);
-    line-height: 1;
-  }
-
-  .section-heading span {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .calculator-shell {
-    margin-top: 0;
-  }
-
-  .form-card {
-    order: 1;
-  }
-
-  .result-card {
-    order: 2;
-  }
-}
-/* =========================
-   LectureSafe Premium Mobile UI
-   Phone par calculator-first view ko branded + attractive banata hai
-========================= */
-
-@media (max-width: 600px) {
-  body {
-    background:
-      radial-gradient(circle at top left, rgba(139, 92, 246, 0.35), transparent 32%),
-      radial-gradient(circle at top right, rgba(6, 182, 212, 0.25), transparent 34%),
-      linear-gradient(180deg, #070a16 0%, #0b1024 42%, #070a16 100%);
-  }
-
-  .calculator-section {
-    position: relative;
-    padding-top: 18px;
-  }
-
-  /* Mobile calculator ke upar mini branded intro */
-  .calculator-section::before {
-    content: "LectureSafe";
-    display: block;
-    width: fit-content;
-    margin: 0 auto 8px;
-    padding: 10px 18px;
-    border-radius: 999px;
-    color: white;
-    font-size: 1rem;
-    font-weight: 950;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, var(--primary), var(--cyan));
-    box-shadow: 0 16px 42px rgba(139, 92, 246, 0.35);
-  }
-
-  .section-heading {
-    position: relative;
-    padding: 18px 16px;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
-    border-radius: 26px;
-    background:
-      linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.10)),
-      rgba(15, 23, 42, 0.72);
-    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(18px);
-  }
-
-  .section-heading p {
-    color: #a78bfa;
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-  }
-
-  .section-heading h2 {
-    margin-top: 8px;
-    font-size: clamp(2.05rem, 10.5vw, 3rem);
-    line-height: 0.96;
-    letter-spacing: -0.055em;
-  }
-
-  .section-heading span {
-    margin-top: 11px;
-    color: var(--muted);
-    font-size: 0.92rem;
-    line-height: 1.55;
-  }
-
-  .calculator-shell {
-    position: relative;
-    padding: 11px;
-    border-radius: 30px;
-    background:
-      linear-gradient(135deg, rgba(139, 92, 246, 0.24), rgba(6, 182, 212, 0.14)),
-      rgba(15, 23, 42, 0.72);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
-  }
-
-  .form-card,
-  .result-card {
-    border-radius: 25px;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.055));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  .card-heading {
-    margin-bottom: 18px;
-  }
-
-  .card-heading p {
-    color: #a78bfa;
-    font-size: 0.76rem;
-  }
-
-  .card-heading h3 {
-    font-size: 1.35rem;
-  }
-
-  .card-heading > span {
-    padding: 7px 11px;
-    font-size: 0.82rem;
-  }
-
-  .input-group {
-    margin-bottom: 15px;
-  }
-
-  .input-group label {
-    font-size: 0.93rem;
-    line-height: 1.45;
-  }
-
-  .input-group input {
-    min-height: 50px;
-    border-radius: 17px;
-    background: rgba(2, 6, 23, 0.58);
-  }
-
-  .calculate-btn {
-    min-height: 52px;
-    font-size: 0.98rem;
-    box-shadow: 0 18px 44px rgba(139, 92, 246, 0.34);
-  }
-
-  .reset-btn {
-    min-height: 50px;
-  }
-
-  .privacy-box {
-    border-radius: 20px;
-    background: rgba(139, 92, 246, 0.10);
-  }
-
-  .main-result {
-    border-radius: 24px;
-    background:
-      radial-gradient(circle at top right, rgba(6, 182, 212, 0.18), transparent 45%),
-      rgba(255, 255, 255, 0.075);
-  }
-
-  .main-result span {
-    font-size: 0.9rem;
-  }
-
-  .main-result strong {
-    margin-top: 10px;
-    font-size: clamp(3.25rem, 16vw, 5rem);
-    letter-spacing: -0.075em;
-  }
-
-  .stats-grid {
-    gap: 11px;
-  }
-
-  .stat-card {
-    border-radius: 20px;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045));
-  }
-
-  .stat-card span {
-    font-size: 0.86rem;
-  }
-
-  .stat-card strong {
-    font-size: 1.7rem;
-  }
-
-  .advice-box {
-    border-radius: 20px;
-    font-size: 0.92rem;
-    line-height: 1.6;
-  }
-
-  .motivation-strip {
-    margin-top: 8px;
-  }
-
-  .hero-section {
-    margin-top: 20px;
-  }
-}
-
-/* Extra small phones */
-@media (max-width: 390px) {
-  .calculator-section::before {
-    font-size: 0.92rem;
-    padding: 9px 15px;
-  }
-
-  .section-heading h2 {
-    font-size: clamp(1.85rem, 9.5vw, 2.55rem);
-  }
-
-  .main-result strong {
-    font-size: clamp(2.9rem, 15vw, 4.5rem);
   }
 }
