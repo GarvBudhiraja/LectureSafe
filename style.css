@@ -1076,3 +1076,209 @@ body.dark-mode .input-group input {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   LectureSafe Mobile Polish Fix
+   Fix: horizontal movement, title clarity, phone spacing
+========================= */
+
+/* Strong horizontal scroll fix */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent any large section from creating side scroll */
+main,
+header,
+footer,
+.hero-section,
+.calculator-section,
+.info-section,
+.disclaimer-section,
+.motivation-strip {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make brand cleaner */
+.brand-text {
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* Make main title readable and premium */
+.hero-center h1 {
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.hero-center h1 span {
+  margin-top: 14px;
+  letter-spacing: -0.035em;
+}
+
+/* Better hero spacing */
+.hero-section {
+  padding-top: 42px;
+}
+
+/* Mobile specific fix */
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .nav-card {
+    width: 100%;
+    padding: 10px 11px;
+    border-radius: 22px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 13px;
+    font-size: 0.95rem;
+  }
+
+  .brand-text {
+    font-size: 0.98rem;
+  }
+
+  .theme-btn {
+    padding: 8px 10px;
+    min-height: 40px;
+    font-size: 0.88rem;
+  }
+
+  .hero-section {
+    width: min(100% - 20px, 1120px);
+    padding-top: 38px;
+    padding-bottom: 42px;
+    min-height: auto;
+  }
+
+  .hero-badge {
+    font-size: 0.82rem;
+    padding: 9px 13px;
+    line-height: 1.35;
+  }
+
+  .hero-center h1 {
+    margin-top: 22px;
+    font-size: clamp(3rem, 15.5vw, 4.85rem);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+
+  .hero-center h1 span {
+    margin-top: 12px;
+    font-size: clamp(1.25rem, 6.3vw, 2.05rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-subtitle {
+    margin-top: 20px;
+    max-width: 95%;
+    font-size: 0.96rem;
+    line-height: 1.62;
+  }
+
+  .hero-points {
+    margin-top: 26px;
+    gap: 12px;
+  }
+
+  .point-card {
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .hero-btn {
+    margin-top: 28px;
+    padding: 13px 21px;
+    min-height: 46px;
+  }
+
+  .motivation-strip,
+  .calculator-section,
+  .info-section,
+  .disclaimer-section,
+  .footer {
+    width: min(100% - 20px, 1120px);
+  }
+
+  .calculator-shell {
+    padding: 10px;
+    border-radius: 24px;
+  }
+
+  .form-card,
+  .result-card {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.9rem, 10vw, 2.7rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .section-heading span {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .input-group label {
+    font-size: 0.95rem;
+  }
+
+  .main-result strong {
+    font-size: clamp(3rem, 15vw, 4.7rem);
+    letter-spacing: -0.065em;
+  }
+
+  .stat-card strong {
+    font-size: 1.65rem;
+  }
+
+  .orb {
+    display: none;
+  }
+}
+
+/* Very small phones like iPhone SE */
+@media (max-width: 390px) {
+  .hero-center h1 {
+    font-size: clamp(2.65rem, 14.5vw, 4.2rem);
+    letter-spacing: -0.045em;
+  }
+
+  .hero-center h1 span {
+    font-size: clamp(1.08rem, 5.8vw, 1.75rem);
+  }
+
+  .brand-text {
+    font-size: 0.92rem;
+  }
+
+  .theme-btn {
+    font-size: 0.82rem;
+    padding: 8px 9px;
+  }
+}
