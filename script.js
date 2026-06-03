@@ -125,12 +125,6 @@ function calculateClassesNeeded(requiredPercentage, totalHeld, attended) {
     return "Not possible";
   }
 
-  /*
-    Formula:
-    (attended + x) / (held + x) >= requiredDecimal
-
-    x = number of future classes needed
-  */
   const needed = Math.ceil(
     ((requiredDecimal * totalHeld) - attended) / (1 - requiredDecimal)
   );
@@ -150,10 +144,6 @@ function calculateSafeMissesFromNow(requiredPercentage, totalHeld, attended) {
     return 0;
   }
 
-  /*
-    Formula:
-    attended / (held + misses) >= requiredDecimal
-  */
   const safeMisses = Math.floor((attended / requiredDecimal) - totalHeld);
 
   return Math.max(0, safeMisses);
@@ -328,19 +318,3 @@ if (startPlanningBtn) {
 }
 
 updateThemeButton();
-/* Mobile users should directly see the calculator first */
-function openCalculatorFirstOnMobile() {
-  const isMobile = window.innerWidth <= 700;
-  const calculatorSection = document.getElementById("calculator");
-
-  if (isMobile && calculatorSection) {
-    setTimeout(function () {
-      calculatorSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 500);
-  }
-}
-
-openCalculatorFirstOnMobile();
