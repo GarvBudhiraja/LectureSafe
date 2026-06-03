@@ -307,3 +307,13 @@ resetBtn.addEventListener("click", resetCalculator);
 themeToggle.addEventListener("click", toggleTheme);
 
 updateThemeButton();
+const startPlanningBtn = document.getElementById("startPlanningBtn");
+
+if (startPlanningBtn) {
+  startPlanningBtn.addEventListener("click", () => {
+    document.getElementById("calculator").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+}
