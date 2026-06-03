@@ -1,7 +1,7 @@
 /* =========================
-   BunkMate
-   Safe static frontend attendance planner
-   No API, no database, no file access
+   LectureSafe
+   Private static attendance planner
+   No API, no database, no cookies, no localStorage, no file access
 ========================= */
 
 const form = document.getElementById("attendanceForm");
@@ -32,6 +32,8 @@ const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
 const themeText = document.getElementById("themeText");
 
+const startPlanningBtn = document.getElementById("startPlanningBtn");
+
 function getNumber(inputElement) {
   return Number(inputElement.value.trim());
 }
@@ -59,23 +61,23 @@ function validateInputs(requiredPercentage, totalHeld, attended) {
   }
 
   if (requiredPercentage <= 0 || requiredPercentage > 100) {
-    return "Required attendance percentage must be between 1 and 100.";
+    return "Minimum attendance criteria must be between 1 and 100.";
   }
 
   if (totalHeld <= 0) {
-    return "Total classes held must be more than 0.";
+    return "Total lectures/classes held must be more than 0.";
   }
 
   if (attended < 0) {
-    return "Attended classes cannot be negative.";
+    return "Attended lectures/classes cannot be negative.";
   }
 
   if (!Number.isInteger(totalHeld) || !Number.isInteger(attended)) {
-    return "Total classes and attended classes should be whole numbers like 10, 20, or 40.";
+    return "Total and attended lecture counts should be whole numbers like 10, 20, or 40.";
   }
 
   if (attended > totalHeld) {
-    return "Attended classes cannot be more than total classes held.";
+    return "Attended lectures/classes cannot be more than total lectures/classes held.";
   }
 
   return "";
@@ -88,7 +90,7 @@ function getZone(currentPercentage, requiredPercentage) {
       className: "safe",
       status: "You are safe right now.",
       advice:
-        "Great! Your current attendance is equal to or above the required target. Keep planning responsibly."
+        "Your attendance is equal to or above the minimum attendance criteria. Keep planning responsibly."
     };
   }
 
@@ -98,7 +100,7 @@ function getZone(currentPercentage, requiredPercentage) {
       className: "warning",
       status: "You are close, but not fully safe.",
       advice:
-        "You are close to the required target, but you should attend upcoming classes to stay safe."
+        "Your attendance is close to the minimum criteria. Try to attend upcoming classes to stay on the safe side."
     };
   }
 
@@ -123,6 +125,12 @@ function calculateClassesNeeded(requiredPercentage, totalHeld, attended) {
     return "Not possible";
   }
 
+  /*
+    Formula:
+    (attended + x) / (held + x) >= requiredDecimal
+
+    x = number of future classes needed
+  */
   const needed = Math.ceil(
     ((requiredDecimal * totalHeld) - attended) / (1 - requiredDecimal)
   );
@@ -142,6 +150,10 @@ function calculateSafeMissesFromNow(requiredPercentage, totalHeld, attended) {
     return 0;
   }
 
+  /*
+    Formula:
+    attended / (held + misses) >= requiredDecimal
+  */
   const safeMisses = Math.floor((attended / requiredDecimal) - totalHeld);
 
   return Math.max(0, safeMisses);
@@ -150,14 +162,14 @@ function calculateSafeMissesFromNow(requiredPercentage, totalHeld, attended) {
 function getMotivationMessage(zoneName, safeMisses, classesNeeded) {
   if (zoneName === "Safe Zone") {
     if (safeMisses === 0) {
-      return "You are safe, but you are very close to the boundary. Missing one class may put you below the target.";
+      return "You are safe, but very close to the boundary. Missing one more class may put you below your target.";
     }
 
-    return `You are currently safe. You can miss about ${safeMisses} upcoming class(es), but official records should always be checked.`;
+    return `You can still miss about ${safeMisses} upcoming class(es), but always confirm with official records.`;
   }
 
   if (zoneName === "Warning Zone") {
-    return `Stay alert. Attend at least ${classesNeeded} upcoming class(es) to reach your target.`;
+    return `Attend at least ${classesNeeded} upcoming class(es) to reach your target.`;
   }
 
   return `Recovery is needed. You may need to attend ${classesNeeded} upcoming class(es) to reach the target.`;
@@ -237,7 +249,7 @@ function calculateAttendance() {
 
   if (classesNeeded === "Not possible") {
     adviceBox.textContent =
-      "Your target is 100%, and you have already missed one or more classes. Reaching 100% is not possible with the current record.";
+      "Your target is 100%, but you have already missed one or more classes. Reaching 100% is not possible with the current record.";
   } else {
     const motivation = getMotivationMessage(
       zone.name,
@@ -263,7 +275,7 @@ function handleFormSubmit(event) {
 
     calculateBtn.classList.remove("is-loading");
     calculateBtn.disabled = false;
-  }, 450);
+  }, 350);
 }
 
 function resetCalculator() {
@@ -284,7 +296,7 @@ function resetCalculator() {
   neededClassesText.textContent = "--";
 
   adviceBox.textContent =
-    "Tip: Check your official attendance portal before entering values here.";
+    "Tip: Use your official attendance portal numbers for the most accurate result.";
 
   resultCard.classList.add("waiting");
   resultCard.classList.remove("result-animate");
@@ -306,14 +318,13 @@ form.addEventListener("submit", handleFormSubmit);
 resetBtn.addEventListener("click", resetCalculator);
 themeToggle.addEventListener("click", toggleTheme);
 
-updateThemeButton();
-const startPlanningBtn = document.getElementById("startPlanningBtn");
-
 if (startPlanningBtn) {
-  startPlanningBtn.addEventListener("click", () => {
+  startPlanningBtn.addEventListener("click", function () {
     document.getElementById("calculator").scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
   });
 }
+
+updateThemeButton();
