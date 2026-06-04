@@ -1299,3 +1299,135 @@ body {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   HARD MOBILE PERFORMANCE MODE
+   Fixes scroll lag on phones
+========================= */
+
+@media (max-width: 768px) {
+  /* Mobile par sticky navbar lag kar sakti hai */
+  .topbar {
+    position: static !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Heavy fixed background remove */
+  .app-bg,
+  .orb,
+  .orb-one,
+  .orb-two {
+    display: none !important;
+  }
+
+  body {
+    background: #070a16 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* All glass blur completely off on phone */
+  .nav-card,
+  .auth-card,
+  .panel,
+  .summary-card,
+  .advisor-card,
+  .tools-card,
+  .subject-card,
+  .empty-state,
+  .sidebar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(15, 23, 42, 0.96) !important;
+    box-shadow: none !important;
+  }
+
+  /* Big decorative circles create scroll repaint */
+  .subject-card::after {
+    display: none !important;
+  }
+
+  /* Remove hover movement on mobile */
+  .primary-btn:hover,
+  .secondary-btn:hover,
+  .danger-btn:hover,
+  .theme-btn:hover,
+  .logout-btn:hover,
+  .small-btn:hover,
+  .side-link:hover {
+    transform: none !important;
+  }
+
+  /* Disable all expensive transitions on mobile */
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Cards ko simple app panels jaisa rakho */
+  .auth-card,
+  .panel,
+  .summary-card,
+  .advisor-card,
+  .tools-card,
+  .subject-card,
+  .empty-state {
+    border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  }
+
+  /* Less repaint in long list */
+  .subject-card,
+  .summary-card,
+  .panel,
+  .advisor-card,
+  .tools-card {
+    contain: content;
+  }
+
+  /* Smooth scroll also phone pe jhatka/lag de sakta hai */
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Layout spacing thoda tight for app feel */
+  .app-section {
+    padding-top: 16px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .content-area {
+    gap: 14px !important;
+  }
+
+  .summary-grid,
+  .subjects-grid {
+    gap: 14px !important;
+  }
+
+  .hero-panel,
+  .panel,
+  .advisor-card,
+  .tools-card,
+  .subject-card,
+  .summary-card {
+    padding: 18px !important;
+  }
+
+  /* Big text ko thoda lighter */
+  .auth-hero h1,
+  .hero-panel h1 {
+    font-size: clamp(2.4rem, 12vw, 4rem) !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .auth-hero h1 span,
+  .hero-panel h1 span {
+    font-size: clamp(1.15rem, 6vw, 1.9rem) !important;
+  }
+
+  .percent-box strong,
+  .hero-mini strong {
+    font-size: clamp(2.7rem, 14vw, 4rem) !important;
+  }
+}
