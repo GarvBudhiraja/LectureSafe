@@ -1187,3 +1187,115 @@ body.dark-mode .input-group input {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   LectureSafe Performance Fix
+   Makes scrolling and refresh smoother
+========================= */
+
+/* Smooth but lighter rendering */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+/* Heavy blur effects ko light kar diya */
+.nav-card,
+.auth-card,
+.panel,
+.summary-card,
+.advisor-card,
+.tools-card,
+.subject-card,
+.empty-state,
+.sidebar {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Background orbs lag create karte hain, unko disable */
+.orb,
+.orb-one,
+.orb-two {
+  display: none !important;
+}
+
+/* Fixed heavy background ko lighter banaya */
+.app-bg {
+  background:
+    radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 34%),
+    radial-gradient(circle at top right, rgba(6, 182, 212, 0.13), transparent 34%),
+    linear-gradient(180deg, #070a16 0%, #0b1024 45%, #070a16 100%) !important;
+}
+
+/* Card hover/repaint load kam */
+.subject-card,
+.summary-card,
+.auth-card,
+.panel,
+.advisor-card,
+.tools-card {
+  transform: translateZ(0);
+}
+
+/* Large decorative circle thoda lighter */
+.subject-card::after {
+  opacity: 0.14 !important;
+  width: 130px !important;
+  height: 130px !important;
+  top: -55px !important;
+  right: -55px !important;
+}
+
+/* Transitions ko light rakha */
+* {
+  transition-duration: 0.18s !important;
+}
+
+/* Buttons responsive but not heavy */
+.primary-btn,
+.secondary-btn,
+.danger-btn,
+.small-btn,
+.theme-btn,
+.logout-btn {
+  transition: transform 0.15s ease, opacity 0.15s ease !important;
+}
+
+/* Mobile extra optimization */
+@media (max-width: 640px) {
+  .app-bg {
+    background:
+      linear-gradient(180deg, #070a16 0%, #0b1024 48%, #070a16 100%) !important;
+  }
+
+  .nav-card,
+  .auth-card,
+  .panel,
+  .summary-card,
+  .advisor-card,
+  .tools-card,
+  .subject-card,
+  .empty-state,
+  .sidebar {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22) !important;
+  }
+
+  .subject-card::after {
+    display: none !important;
+  }
+}
+
+/* Very low motion devices */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
