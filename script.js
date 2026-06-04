@@ -33,6 +33,16 @@ const themeIcon = document.getElementById("themeIcon");
 const themeText = document.getElementById("themeText");
 
 const startPlanningBtn = document.getElementById("startPlanningBtn");
+const calculatorSection = document.getElementById("calculator");
+const calculatorShell = document.getElementById("calculatorShell");
+
+function isMobileDevice() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function getScrollBehavior() {
+  return isMobileDevice() ? "auto" : "smooth";
+}
 
 function getNumber(inputElement) {
   return Number(inputElement.value.trim());
@@ -126,7 +136,7 @@ function calculateClassesNeeded(requiredPercentage, totalHeld, attended) {
   }
 
   const needed = Math.ceil(
-    ((requiredDecimal * totalHeld) - attended) / (1 - requiredDecimal)
+    (requiredDecimal * totalHeld - attended) / (1 - requiredDecimal)
   );
 
   return Math.max(0, needed);
@@ -144,7 +154,7 @@ function calculateSafeMissesFromNow(requiredPercentage, totalHeld, attended) {
     return 0;
   }
 
-  const safeMisses = Math.floor((attended / requiredDecimal) - totalHeld);
+  const safeMisses = Math.floor(attended / requiredDecimal - totalHeld);
 
   return Math.max(0, safeMisses);
 }
@@ -165,6 +175,18 @@ function getMotivationMessage(zoneName, safeMisses, classesNeeded) {
   return `Recovery is needed. You may need to attend ${classesNeeded} upcoming class(es) to reach the target.`;
 }
 
+function popCalculatorShell() {
+  if (!calculatorShell) {
+    return;
+  }
+
+  calculatorShell.classList.remove("planner-pop");
+
+  void calculatorShell.offsetWidth;
+
+  calculatorShell.classList.add("planner-pop");
+}
+
 function liftResultCard() {
   resultCard.classList.remove("result-animate");
 
@@ -173,7 +195,7 @@ function liftResultCard() {
   resultCard.classList.add("result-animate");
 
   resultCard.scrollIntoView({
-    behavior: "smooth",
+    behavior: getScrollBehavior(),
     block: "center"
   });
 }
@@ -265,7 +287,7 @@ function handleFormSubmit(event) {
 
     calculateBtn.classList.remove("is-loading");
     calculateBtn.disabled = false;
-  }, 350);
+  }, 250);
 }
 
 function resetCalculator() {
@@ -304,17 +326,23 @@ function toggleTheme() {
   updateThemeButton();
 }
 
+function startPlanning() {
+  calculatorSection.scrollIntoView({
+    behavior: getScrollBehavior(),
+    block: "start"
+  });
+
+  setTimeout(function () {
+    popCalculatorShell();
+  }, isMobileDevice() ? 80 : 450);
+}
+
 form.addEventListener("submit", handleFormSubmit);
 resetBtn.addEventListener("click", resetCalculator);
 themeToggle.addEventListener("click", toggleTheme);
 
 if (startPlanningBtn) {
-  startPlanningBtn.addEventListener("click", function () {
-    document.getElementById("calculator").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  });
+  startPlanningBtn.addEventListener("click", startPlanning);
 }
 
 updateThemeButton();
