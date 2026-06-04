@@ -3,8 +3,8 @@
   --text: #101828;
   --muted: #667085;
 
-  --card: rgba(255, 255, 255, 0.72);
-  --border: rgba(255, 255, 255, 0.7);
+  --card: rgba(255, 255, 255, 0.78);
+  --border: rgba(16, 24, 40, 0.12);
 
   --primary: #8b5cf6;
   --blue: #2563eb;
@@ -24,12 +24,13 @@ body.dark-mode {
   --bg: #070a16;
   --text: #f8fafc;
   --muted: #b8c1d6;
-  --card: rgba(15, 23, 42, 0.74);
+
+  --card: rgba(15, 23, 42, 0.76);
   --border: rgba(148, 163, 184, 0.22);
+
   --shadow: 0 30px 100px rgba(0, 0, 0, 0.42);
 }
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -52,7 +53,7 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 button,
@@ -98,6 +99,7 @@ footer,
     linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
   background-size: 42px 42px;
   mask-image: radial-gradient(circle at top, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at top, black, transparent 75%);
 }
 
 .noise-layer {
@@ -161,6 +163,7 @@ footer,
   padding: 16px;
   padding-top: max(16px, env(safe-area-inset-top));
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .nav-card {
@@ -172,6 +175,7 @@ footer,
   background: var(--card);
   box-shadow: 0 14px 50px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
 
   display: flex;
   align-items: center;
@@ -230,7 +234,7 @@ footer,
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .theme-btn:hover {
@@ -263,6 +267,7 @@ footer,
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   font-weight: 850;
   animation: fadeUp 0.7s ease both;
 }
@@ -342,6 +347,7 @@ footer,
   border: 1px solid var(--border);
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   transition: transform 0.25s ease, border 0.25s ease;
 }
 
@@ -393,6 +399,7 @@ footer,
   border: 1px solid var(--border);
   background: var(--card);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .motivation-track {
@@ -464,6 +471,31 @@ footer,
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.13), rgba(6, 182, 212, 0.08)), var(--card);
   box-shadow: var(--shadow);
   backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.calculator-shell.planner-pop {
+  animation: plannerPop 0.75s ease both;
+}
+
+@keyframes plannerPop {
+  0% {
+    transform: translateY(26px) scale(0.96);
+    box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+    border-color: var(--border);
+  }
+
+  45% {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.16), var(--shadow);
+    border-color: rgba(139, 92, 246, 0.72);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: var(--shadow);
+    border-color: var(--border);
+  }
 }
 
 .form-card,
@@ -473,6 +505,15 @@ footer,
   background: rgba(255,255,255,0.08);
   padding: 24px;
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+body:not(.dark-mode) .form-card,
+body:not(.dark-mode) .result-card,
+body:not(.dark-mode) .main-result,
+body:not(.dark-mode) .stat-card,
+body:not(.dark-mode) .privacy-box {
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .card-heading {
@@ -526,13 +567,13 @@ footer,
   border-radius: var(--radius-md);
   padding: 15px 16px;
   color: var(--text);
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.9);
   font-size: 16px;
   transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 body.dark-mode .input-group input {
-  background: rgba(2, 6, 23, 0.5);
+  background: rgba(2, 6, 23, 0.62);
 }
 
 .input-group input:focus {
@@ -849,6 +890,7 @@ body.dark-mode .input-group input {
   background: var(--card);
   box-shadow: 0 18px 60px rgba(0,0,0,0.08);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   transition: transform 0.25s ease;
 }
 
@@ -891,6 +933,7 @@ body.dark-mode .input-group input {
   background: var(--card);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   text-align: center;
 }
 
@@ -912,7 +955,7 @@ body.dark-mode .input-group input {
   color: var(--muted);
 }
 
-/* Animation */
+/* Animations */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -933,7 +976,8 @@ body.dark-mode .input-group input {
   .point-card,
   .info-card,
   .disclaimer-card,
-  .motivation-strip {
+  .motivation-strip,
+  .calculator-shell {
     background: rgba(15, 23, 42, 0.95);
   }
 
@@ -943,7 +987,8 @@ body.dark-mode .input-group input {
   body:not(.dark-mode) .point-card,
   body:not(.dark-mode) .info-card,
   body:not(.dark-mode) .disclaimer-card,
-  body:not(.dark-mode) .motivation-strip {
+  body:not(.dark-mode) .motivation-strip,
+  body:not(.dark-mode) .calculator-shell {
     background: rgba(255, 255, 255, 0.95);
   }
 }
@@ -979,7 +1024,7 @@ body.dark-mode .input-group input {
   }
 }
 
-/* Mobile */
+/* Mobile layout */
 @media (max-width: 600px) {
   .topbar {
     padding: 12px 10px;
@@ -1142,14 +1187,6 @@ body.dark-mode .input-group input {
   .stat-card strong {
     font-size: 1.65rem;
   }
-
-  .orb {
-    display: none;
-  }
-
-  .motivation-track {
-    animation-duration: 34s;
-  }
 }
 
 /* Very small phones */
@@ -1177,6 +1214,154 @@ body.dark-mode .input-group input {
   }
 }
 
+/* =========================
+   Real Phone Performance Fix
+   Light mode also fixed here
+========================= */
+
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    overflow-x: hidden !important;
+  }
+
+  .bg-grid,
+  .noise-layer,
+  .orb,
+  .orb-1,
+  .orb-2,
+  .orb-3 {
+    display: none !important;
+  }
+
+  .topbar {
+    position: static !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .nav-card,
+  .hero-badge,
+  .point-card,
+  .motivation-strip,
+  .calculator-shell,
+  .form-card,
+  .result-card,
+  .main-result,
+  .stat-card,
+  .privacy-box,
+  .info-card,
+  .disclaimer-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.dark-mode) .nav-card,
+  body:not(.dark-mode) .hero-badge,
+  body:not(.dark-mode) .point-card,
+  body:not(.dark-mode) .motivation-strip,
+  body:not(.dark-mode) .calculator-shell,
+  body:not(.dark-mode) .form-card,
+  body:not(.dark-mode) .result-card,
+  body:not(.dark-mode) .main-result,
+  body:not(.dark-mode) .stat-card,
+  body:not(.dark-mode) .privacy-box,
+  body:not(.dark-mode) .info-card,
+  body:not(.dark-mode) .disclaimer-card {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-color: rgba(16, 24, 40, 0.12) !important;
+  }
+
+  body.dark-mode .nav-card,
+  body.dark-mode .hero-badge,
+  body.dark-mode .point-card,
+  body.dark-mode .motivation-strip,
+  body.dark-mode .calculator-shell,
+  body.dark-mode .form-card,
+  body.dark-mode .result-card,
+  body.dark-mode .main-result,
+  body.dark-mode .stat-card,
+  body.dark-mode .privacy-box,
+  body.dark-mode .info-card,
+  body.dark-mode .disclaimer-card {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border-color: rgba(148, 163, 184, 0.18) !important;
+  }
+
+  body:not(.dark-mode) .input-group input {
+    background: #ffffff !important;
+    color: #101828 !important;
+  }
+
+  body.dark-mode .input-group input {
+    background: rgba(2, 6, 23, 0.92) !important;
+    color: #f8fafc !important;
+  }
+
+  .theme-btn:hover,
+  .hero-btn:hover,
+  .point-card:hover,
+  .calculate-btn:hover,
+  .reset-btn:hover,
+  .stat-card:hover,
+  .info-card:hover {
+    transform: none !important;
+  }
+
+  .motivation-track {
+    animation: none !important;
+    width: 100% !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+  }
+
+  .result-card.result-animate {
+    animation: none !important;
+  }
+
+  .progress-fill {
+    transition: width 0.25s ease !important;
+  }
+
+  .calculate-btn::before {
+    display: none !important;
+  }
+
+  .calculator-shell.planner-pop {
+    animation: mobilePlannerPop 0.45s ease both !important;
+  }
+
+  @keyframes mobilePlannerPop {
+    0% {
+      transform: scale(0.98);
+      border-color: var(--border);
+    }
+
+    50% {
+      transform: scale(1.01);
+      border-color: rgba(139, 92, 246, 0.75);
+    }
+
+    100% {
+      transform: scale(1);
+      border-color: var(--border);
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.12s !important;
+  }
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -1185,249 +1370,5 @@ body.dark-mode .input-group input {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
-  }
-}
-/* =========================
-   LectureSafe Performance Fix
-   Makes scrolling and refresh smoother
-========================= */
-
-/* Smooth but lighter rendering */
-html {
-  scroll-behavior: auto;
-}
-
-body {
-  text-rendering: optimizeLegibility;
-}
-
-/* Heavy blur effects ko light kar diya */
-.nav-card,
-.auth-card,
-.panel,
-.summary-card,
-.advisor-card,
-.tools-card,
-.subject-card,
-.empty-state,
-.sidebar {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18) !important;
-}
-
-/* Background orbs lag create karte hain, unko disable */
-.orb,
-.orb-one,
-.orb-two {
-  display: none !important;
-}
-
-/* Fixed heavy background ko lighter banaya */
-.app-bg {
-  background:
-    radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 34%),
-    radial-gradient(circle at top right, rgba(6, 182, 212, 0.13), transparent 34%),
-    linear-gradient(180deg, #070a16 0%, #0b1024 45%, #070a16 100%) !important;
-}
-
-/* Card hover/repaint load kam */
-.subject-card,
-.summary-card,
-.auth-card,
-.panel,
-.advisor-card,
-.tools-card {
-  transform: translateZ(0);
-}
-
-/* Large decorative circle thoda lighter */
-.subject-card::after {
-  opacity: 0.14 !important;
-  width: 130px !important;
-  height: 130px !important;
-  top: -55px !important;
-  right: -55px !important;
-}
-
-/* Transitions ko light rakha */
-* {
-  transition-duration: 0.18s !important;
-}
-
-/* Buttons responsive but not heavy */
-.primary-btn,
-.secondary-btn,
-.danger-btn,
-.small-btn,
-.theme-btn,
-.logout-btn {
-  transition: transform 0.15s ease, opacity 0.15s ease !important;
-}
-
-/* Mobile extra optimization */
-@media (max-width: 640px) {
-  .app-bg {
-    background:
-      linear-gradient(180deg, #070a16 0%, #0b1024 48%, #070a16 100%) !important;
-  }
-
-  .nav-card,
-  .auth-card,
-  .panel,
-  .summary-card,
-  .advisor-card,
-  .tools-card,
-  .subject-card,
-  .empty-state,
-  .sidebar {
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22) !important;
-  }
-
-  .subject-card::after {
-    display: none !important;
-  }
-}
-
-/* Very low motion devices */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-/* =========================
-   HARD MOBILE PERFORMANCE MODE
-   Fixes scroll lag on phones
-========================= */
-
-@media (max-width: 768px) {
-  /* Mobile par sticky navbar lag kar sakti hai */
-  .topbar {
-    position: static !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  /* Heavy fixed background remove */
-  .app-bg,
-  .orb,
-  .orb-one,
-  .orb-two {
-    display: none !important;
-  }
-
-  body {
-    background: #070a16 !important;
-    overflow-x: hidden !important;
-  }
-
-  /* All glass blur completely off on phone */
-  .nav-card,
-  .auth-card,
-  .panel,
-  .summary-card,
-  .advisor-card,
-  .tools-card,
-  .subject-card,
-  .empty-state,
-  .sidebar {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: rgba(15, 23, 42, 0.96) !important;
-    box-shadow: none !important;
-  }
-
-  /* Big decorative circles create scroll repaint */
-  .subject-card::after {
-    display: none !important;
-  }
-
-  /* Remove hover movement on mobile */
-  .primary-btn:hover,
-  .secondary-btn:hover,
-  .danger-btn:hover,
-  .theme-btn:hover,
-  .logout-btn:hover,
-  .small-btn:hover,
-  .side-link:hover {
-    transform: none !important;
-  }
-
-  /* Disable all expensive transitions on mobile */
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
-  }
-
-  /* Cards ko simple app panels jaisa rakho */
-  .auth-card,
-  .panel,
-  .summary-card,
-  .advisor-card,
-  .tools-card,
-  .subject-card,
-  .empty-state {
-    border: 1px solid rgba(148, 163, 184, 0.18) !important;
-  }
-
-  /* Less repaint in long list */
-  .subject-card,
-  .summary-card,
-  .panel,
-  .advisor-card,
-  .tools-card {
-    contain: content;
-  }
-
-  /* Smooth scroll also phone pe jhatka/lag de sakta hai */
-  html {
-    scroll-behavior: auto !important;
-  }
-
-  /* Layout spacing thoda tight for app feel */
-  .app-section {
-    padding-top: 16px !important;
-    padding-bottom: 40px !important;
-  }
-
-  .content-area {
-    gap: 14px !important;
-  }
-
-  .summary-grid,
-  .subjects-grid {
-    gap: 14px !important;
-  }
-
-  .hero-panel,
-  .panel,
-  .advisor-card,
-  .tools-card,
-  .subject-card,
-  .summary-card {
-    padding: 18px !important;
-  }
-
-  /* Big text ko thoda lighter */
-  .auth-hero h1,
-  .hero-panel h1 {
-    font-size: clamp(2.4rem, 12vw, 4rem) !important;
-    letter-spacing: -0.045em !important;
-  }
-
-  .auth-hero h1 span,
-  .hero-panel h1 span {
-    font-size: clamp(1.15rem, 6vw, 1.9rem) !important;
-  }
-
-  .percent-box strong,
-  .hero-mini strong {
-    font-size: clamp(2.7rem, 14vw, 4rem) !important;
   }
 }
