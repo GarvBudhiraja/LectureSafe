@@ -45,13 +45,6 @@ function isDarkMode() {
   return document.documentElement.classList.contains("dark-mode");
 }
 
-function applyTheme(isDark) {
-  document.documentElement.classList.toggle("dark-mode", isDark);
-  updateThemeButton();
-  updateFavicon();
-  updateThemeColor();
-}
-
 function updateThemeButton() {
   const dark = isDarkMode();
 
@@ -60,9 +53,7 @@ function updateThemeButton() {
 }
 
 function updateFavicon() {
-  if (!dynamicFavicon) {
-    return;
-  }
+  if (!dynamicFavicon) return;
 
   dynamicFavicon.href = isDarkMode()
     ? "favicon-dark.svg"
@@ -70,14 +61,19 @@ function updateFavicon() {
 }
 
 function updateThemeColor() {
-  if (!themeColorMeta) {
-    return;
-  }
+  if (!themeColorMeta) return;
 
   themeColorMeta.setAttribute(
     "content",
     isDarkMode() ? "#070a16" : "#f7f8ff"
   );
+}
+
+function applyTheme(isDark) {
+  document.documentElement.classList.toggle("dark-mode", isDark);
+  updateThemeButton();
+  updateFavicon();
+  updateThemeColor();
 }
 
 function toggleTheme() {
@@ -92,7 +88,6 @@ function getNumber(inputElement) {
 function showError(message) {
   errorBox.textContent = message;
   errorBox.classList.add("show");
-
   resultCard.classList.remove("result-animate");
   adviceBox.textContent = "Fix the error and calculate again.";
 }
@@ -217,9 +212,7 @@ function getMotivationMessage(zoneName, safeMisses, classesNeeded) {
 }
 
 function focusCalculatorShell() {
-  if (!calculatorShell) {
-    return;
-  }
+  if (!calculatorShell) return;
 
   calculatorShell.classList.remove("planner-pop");
 
@@ -228,7 +221,7 @@ function focusCalculatorShell() {
 
     window.setTimeout(function () {
       calculatorShell.classList.remove("planner-pop");
-    }, 520);
+    }, 950);
   });
 }
 
@@ -333,10 +326,9 @@ function handleFormSubmit(event) {
 
   window.setTimeout(function () {
     calculateAttendance();
-
     calculateBtn.classList.remove("is-loading");
     calculateBtn.disabled = false;
-  }, 160);
+  }, 140);
 }
 
 function resetCalculator() {
@@ -364,14 +356,12 @@ function resetCalculator() {
 }
 
 function startPlanning() {
+  focusCalculatorShell();
+
   calculatorSection.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
-
-  window.setTimeout(function () {
-    focusCalculatorShell();
-  }, 360);
 }
 
 form.addEventListener("submit", handleFormSubmit);
