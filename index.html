@@ -8,11 +8,11 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
 
-  <title>LectureSafe</title>
+  <title>LectureSafe - Attendance Calculator</title>
 
   <meta
     name="description"
-    content="LectureSafe is a private and responsive attendance planning tool for students."
+    content="LectureSafe is a private attendance calculator that helps students check attendance percentage, safe misses, and classes needed to reach their target."
   />
 
   <link rel="stylesheet" href="style.css" />
@@ -33,7 +33,7 @@
       </a>
 
       <div class="nav-actions">
-        <span class="safe-chip">Private Planner</span>
+        <span class="safe-chip">Private Calculator</span>
 
         <button id="themeToggle" class="theme-btn" type="button">
           <span id="themeIcon">☀️</span>
@@ -48,17 +48,17 @@
       <div class="hero-center">
         <div class="hero-badge">
           <span class="live-dot"></span>
-          Student-friendly attendance planning
+          Student-friendly attendance calculator
         </div>
 
         <h1 class="hero-title">
           <span class="title-main">Lecture</span><span class="title-accent">Safe</span>
-          <small>Attendance Planner</small>
+          <small>Attendance Calculator</small>
         </h1>
 
         <p class="hero-subtitle">
-          Plan your attendance responsibly, check your safe zone, and understand
-          how many classes you need to attend to stay on track.
+          Calculate your current attendance, check how many classes you can safely miss,
+          and see how many classes you need to attend to reach your target.
         </p>
 
         <div class="hero-points">
@@ -68,29 +68,29 @@
           </div>
 
           <div class="point-card">
-            <strong>No Tracking</strong>
-            <span>Your data stays private</span>
+            <strong>Private</strong>
+            <span>Your data stays in browser</span>
           </div>
 
           <div class="point-card">
-            <strong>Instant Result</strong>
-            <span>Fast calculation</span>
+            <strong>Safe Misses</strong>
+            <span>Know your safe limit</span>
           </div>
 
           <div class="point-card">
-            <strong>Mobile Ready</strong>
-            <span>Works on every screen</span>
+            <strong>Target Classes</strong>
+            <span>See recovery requirement</span>
           </div>
         </div>
 
         <div class="hero-action-wrap">
           <div class="start-mini-popup">
             <span class="popup-dot"></span>
-            Click here to start your attendance plan
+            Check your attendance and safe misses
           </div>
 
           <button id="startPlanningBtn" class="hero-btn" type="button">
-            Start Planning
+            Start Calculating
             <span>↓</span>
           </button>
         </div>
@@ -99,23 +99,25 @@
 
     <section class="motivation-strip">
       <div class="motivation-track">
-        <span>Plan smart, not careless.</span>
+        <span>Calculate attendance accurately.</span>
+        <span>Check safe misses responsibly.</span>
         <span>Use official records for best accuracy.</span>
-        <span>Stay ahead of attendance stress.</span>
+        <span>Stay above your attendance target.</span>
         <span>Your data never leaves your browser.</span>
-        <span>Plan smart, not careless.</span>
+        <span>Calculate attendance accurately.</span>
+        <span>Check safe misses responsibly.</span>
         <span>Use official records for best accuracy.</span>
-        <span>Stay ahead of attendance stress.</span>
+        <span>Stay above your attendance target.</span>
         <span>Your data never leaves your browser.</span>
       </div>
     </section>
 
     <section id="calculator" class="calculator-section">
       <div class="section-heading">
-        <p>LectureSafe Calculator</p>
-        <h2>Enter your attendance details</h2>
+        <p>Attendance Calculator</p>
+        <h2>Check your safe misses</h2>
         <span>
-          Add your college or university attendance criteria and your current lecture count.
+          Enter your target percentage and current lecture count to calculate your attendance status.
         </span>
       </div>
 
@@ -123,15 +125,14 @@
         <form id="attendanceForm" class="form-card" novalidate>
           <div class="card-heading">
             <div>
-              <p>Input Panel</p>
-              <h3>Your Attendance Data</h3>
+              <p>Attendance Details</p>
+              <h3>Enter Your Numbers</h3>
             </div>
-            
           </div>
 
           <div class="input-group">
             <label for="requiredPercentage">
-              Minimum attendance criteria set by your college/university
+              Minimum attendance percentage required
             </label>
             <input
               id="requiredPercentage"
@@ -169,7 +170,7 @@
 
           <div class="button-row">
             <button id="calculateBtn" class="calculate-btn" type="submit">
-              <span class="btn-text">Calculate Attendance</span>
+              <span class="btn-text">Calculate Result</span>
               <span class="btn-loader"></span>
             </button>
 
@@ -179,9 +180,9 @@
           </div>
 
           <div class="privacy-box">
-            <strong>Privacy Safe</strong>
+            <strong>Private by Design</strong>
             <p>
-              No login. No API. No tracking. Your attendance numbers are used only inside your browser.
+              No login. No API. No tracking. Your attendance numbers are calculated only inside your browser.
             </p>
           </div>
         </form>
@@ -189,7 +190,7 @@
         <section id="resultCard" class="result-card waiting" aria-live="polite">
           <div class="card-heading">
             <div>
-              <p>Result Panel</p>
+              <p>Result Summary</p>
               <h3>Attendance Status</h3>
             </div>
             <span id="zoneBadge" class="zone-badge neutral">Ready</span>
@@ -219,12 +220,12 @@
             </div>
 
             <div class="stat-card">
-              <span>Classes you can still miss</span>
+              <span>Safe misses available</span>
               <strong id="safeMisses">--</strong>
             </div>
 
             <div class="stat-card wide">
-              <span>Classes needed to reach your target</span>
+              <span>Classes needed to reach target</span>
               <strong id="neededClasses">--</strong>
             </div>
           </div>
@@ -241,23 +242,23 @@
         <span>01</span>
         <h3>Safe Zone</h3>
         <p>
-          Your current attendance is equal to or above the minimum attendance criteria.
+          Your attendance is equal to or above the required percentage.
         </p>
       </div>
 
       <div class="info-card">
         <span>02</span>
-        <h3>Warning Zone</h3>
+        <h3>Safe Misses</h3>
         <p>
-          Your attendance is close to the target, so attending upcoming classes is recommended.
+          Shows how many upcoming classes you can miss without going below your target.
         </p>
       </div>
 
       <div class="info-card">
         <span>03</span>
-        <h3>Danger Zone</h3>
+        <h3>Recovery Classes</h3>
         <p>
-          Your attendance is below the safe range and needs consistent recovery.
+          If your attendance is low, it shows how many classes you need to attend to recover.
         </p>
       </div>
     </section>
@@ -266,7 +267,7 @@
       <div class="disclaimer-card">
         <h2>Important Disclaimer</h2>
         <p>
-          LectureSafe is only an attendance planning helper. Final attendance depends on official
+          LectureSafe is only an attendance calculation helper. Final attendance depends on official
           university or college records. Use this tool for responsible planning only.
         </p>
       </div>
@@ -274,7 +275,7 @@
   </main>
 
   <footer class="footer">
-    <p>LectureSafe • Designed & built by Garv Budhiraja • HTML CSS JavaScript</p>
+    <p>LectureSafe • Private Attendance Calculator • Designed & built by Garv Budhiraja</p>
   </footer>
 
   <script src="script.js"></script>
