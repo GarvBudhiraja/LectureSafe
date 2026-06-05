@@ -53,7 +53,7 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.22s ease, color 0.22s ease;
 }
 
 button,
@@ -116,7 +116,7 @@ footer {
   filter: blur(50px);
   opacity: 0.5;
   pointer-events: none;
-  animation: floatOrb 8s ease-in-out infinite alternate;
+  animation: floatOrb 9s ease-in-out infinite alternate;
 }
 
 .orb-1 {
@@ -141,11 +141,11 @@ footer {
 
 @keyframes floatOrb {
   from {
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   to {
-    transform: translateY(-28px) scale(1.08);
+    transform: translate3d(0, -22px, 0) scale(1.05);
   }
 }
 
@@ -228,7 +228,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.18s ease, background 0.18s ease;
 }
 
 .theme-btn:hover {
@@ -263,7 +263,7 @@ footer {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   font-weight: 850;
-  animation: fadeUp 0.7s ease both;
+  animation: fadeUp 0.6s ease both;
 }
 
 .live-dot {
@@ -280,7 +280,7 @@ footer {
   text-align: center;
   line-height: 0.95;
   letter-spacing: -0.025em;
-  animation: fadeUp 0.7s ease 0.08s both;
+  animation: fadeUp 0.6s ease 0.06s both;
 }
 
 .title-main,
@@ -322,7 +322,7 @@ footer {
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.18rem);
   line-height: 1.75;
-  animation: fadeUp 0.7s ease 0.16s both;
+  animation: fadeUp 0.6s ease 0.12s both;
 }
 
 .hero-points {
@@ -331,7 +331,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  animation: fadeUp 0.7s ease 0.24s both;
+  animation: fadeUp 0.6s ease 0.18s both;
 }
 
 .point-card {
@@ -342,11 +342,11 @@ footer {
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  transition: transform 0.25s ease, border 0.25s ease;
+  transition: transform 0.2s ease, border 0.2s ease;
 }
 
 .point-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: rgba(139, 92, 246, 0.5);
 }
 
@@ -370,7 +370,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeUp 0.7s ease 0.32s both;
+  animation: fadeUp 0.6s ease 0.24s both;
 }
 
 .start-mini-popup {
@@ -392,7 +392,7 @@ footer {
   align-items: center;
   gap: 8px;
   white-space: nowrap;
-  animation: miniPopupFloat 2s ease-in-out infinite;
+  animation: miniPopupFloat 2.2s ease-in-out infinite;
 }
 
 .start-mini-popup::after {
@@ -418,15 +418,15 @@ footer {
 
 @keyframes miniPopupFloat {
   0% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    transform: translateY(-6px);
+    transform: translate3d(0, -5px, 0);
   }
 
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -442,7 +442,7 @@ footer {
   font-weight: 950;
   background: linear-gradient(135deg, var(--primary), var(--cyan));
   box-shadow: 0 18px 46px rgba(139, 92, 246, 0.36);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-btn:hover {
@@ -470,7 +470,8 @@ footer {
   padding: 13px 18px;
   color: var(--muted);
   font-weight: 850;
-  animation: marquee 30s linear infinite;
+  animation: marquee 34s linear infinite;
+  will-change: transform;
 }
 
 .motivation-track span {
@@ -479,11 +480,11 @@ footer {
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -539,23 +540,25 @@ footer {
 }
 
 .calculator-shell.planner-pop {
-  animation: plannerPop 0.75s ease both;
+  animation: plannerFocus 0.6s ease both;
 }
 
-@keyframes plannerPop {
+@keyframes plannerFocus {
   0% {
-    transform: translateY(26px) scale(0.96);
-    border-color: var(--border);
+    border-color: rgba(139, 92, 246, 0.22);
+    box-shadow: var(--shadow);
   }
 
   45% {
-    transform: translateY(-8px) scale(1.015);
-    border-color: rgba(139, 92, 246, 0.72);
+    border-color: rgba(139, 92, 246, 0.82);
+    box-shadow:
+      0 0 0 7px rgba(139, 92, 246, 0.14),
+      0 22px 70px rgba(139, 92, 246, 0.22);
   }
 
   100% {
-    transform: translateY(0) scale(1);
     border-color: var(--border);
+    box-shadow: var(--shadow);
   }
 }
 
@@ -651,7 +654,7 @@ body:not(.dark-mode) .privacy-box {
   background: rgba(255,255,255,0.9);
   font-size: 16px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border 0.18s ease, box-shadow 0.18s ease;
 }
 
 body.dark-mode .input-group input {
@@ -663,7 +666,6 @@ body.dark-mode .input-group input {
   box-shadow:
     0 0 0 5px rgba(139, 92, 246, 0.15),
     0 12px 28px rgba(139, 92, 246, 0.12);
-  transform: translateY(-1px);
 }
 
 .error-box {
@@ -693,7 +695,7 @@ body.dark-mode .input-group input {
   min-height: 48px;
   padding: 14px 18px;
   font-weight: 950;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
 .calculate-btn {
@@ -802,20 +804,20 @@ body.dark-mode .input-group input {
 }
 
 .result-card.result-animate {
-  animation: resultPop 0.65s ease both;
+  animation: resultFocus 0.45s ease both;
 }
 
-@keyframes resultPop {
+@keyframes resultFocus {
   0% {
-    transform: translateY(22px) scale(0.97);
+    border-color: var(--border);
   }
 
-  55% {
-    transform: translateY(-8px) scale(1.01);
+  50% {
+    border-color: rgba(6, 182, 212, 0.65);
   }
 
   100% {
-    transform: translateY(0) scale(1);
+    border-color: var(--border);
   }
 }
 
@@ -899,7 +901,7 @@ body.dark-mode .input-group input {
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--primary), var(--cyan));
-  transition: width 0.65s ease;
+  transition: width 0.45s ease;
 }
 
 .stats-grid {
@@ -916,7 +918,7 @@ body.dark-mode .input-group input {
   border-radius: 22px;
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.08);
-  transition: transform 0.2s ease, border 0.2s ease;
+  transition: transform 0.18s ease, border 0.18s ease;
 }
 
 .stat-card:hover {
@@ -975,7 +977,7 @@ body.dark-mode .input-group input {
   box-shadow: 0 18px 60px rgba(0,0,0,0.08);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  transition: transform 0.25s ease, border 0.25s ease;
+  transition: transform 0.2s ease, border 0.2s ease;
   text-align: center;
 }
 
@@ -1047,12 +1049,12 @@ body.dark-mode .input-group input {
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translate3d(0, 16px, 0);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -1086,16 +1088,17 @@ body.dark-mode .input-group input {
   }
 }
 
-/* Mobile */
+/* Mobile Performance Mode */
 @media (max-width: 768px) {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
     background: var(--bg) !important;
     color: var(--text) !important;
     overflow-x: hidden !important;
+    transition: none;
   }
 
   .bg-grid,
@@ -1160,12 +1163,14 @@ body.dark-mode .input-group input {
     font-size: 0.82rem;
     padding: 9px 13px;
     line-height: 1.35;
+    animation: none;
   }
 
   .hero-title {
     margin-top: 22px;
     line-height: 1;
     letter-spacing: -0.015em;
+    animation: none;
   }
 
   .title-main,
@@ -1190,12 +1195,14 @@ body.dark-mode .input-group input {
     max-width: 95%;
     font-size: 0.96rem;
     line-height: 1.62;
+    animation: none;
   }
 
   .hero-points {
     margin-top: 26px;
     gap: 12px;
     grid-template-columns: 1fr;
+    animation: none;
   }
 
   .point-card {
@@ -1208,6 +1215,7 @@ body.dark-mode .input-group input {
 
   .hero-action-wrap {
     margin-top: 28px;
+    animation: none;
   }
 
   .start-mini-popup {
@@ -1217,9 +1225,10 @@ body.dark-mode .input-group input {
     justify-content: center;
     font-size: 0.8rem;
     padding: 9px 12px;
-    box-shadow: 0 10px 28px rgba(139, 92, 246, 0.18);
+    box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    animation: none;
   }
 
   body:not(.dark-mode) .start-mini-popup {
@@ -1257,7 +1266,8 @@ body.dark-mode .input-group input {
     width: max-content !important;
     justify-content: flex-start !important;
     gap: 34px !important;
-    animation: marquee 30s linear infinite !important;
+    animation: marquee 40s linear infinite !important;
+    will-change: transform;
   }
 
   .motivation-track span {
@@ -1268,9 +1278,27 @@ body.dark-mode .input-group input {
     grid-template-columns: 1fr;
     padding: 10px;
     border-radius: 24px;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+    box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .calculator-shell.planner-pop {
+    animation: mobilePlannerFocus 0.42s ease both;
+  }
+
+  @keyframes mobilePlannerFocus {
+    0% {
+      border-color: var(--border);
+    }
+
+    50% {
+      border-color: rgba(139, 92, 246, 0.8);
+    }
+
+    100% {
+      border-color: var(--border);
+    }
   }
 
   body:not(.dark-mode) .calculator-shell {
@@ -1423,6 +1451,11 @@ body.dark-mode .input-group input {
 
   .progress-fill {
     transition: width 0.25s ease;
+  }
+
+  .input-group input:focus {
+    transform: none;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.13);
   }
 }
 
