@@ -470,7 +470,7 @@ footer {
   padding: 13px 18px;
   color: var(--muted);
   font-weight: 850;
-  animation: marquee 26s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 .motivation-track span {
@@ -1257,7 +1257,7 @@ body.dark-mode .input-group input {
     width: max-content !important;
     justify-content: flex-start !important;
     gap: 34px !important;
-    animation: marquee 26s linear infinite !important;
+    animation: marquee 30s linear infinite !important;
   }
 
   .motivation-track span {
