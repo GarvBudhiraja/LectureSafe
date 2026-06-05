@@ -36,6 +36,14 @@ const startPlanningBtn = document.getElementById("startPlanningBtn");
 const calculatorSection = document.getElementById("calculator");
 const calculatorShell = document.getElementById("calculatorShell");
 
+function isMobileDevice() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function getSmoothBehavior() {
+  return "smooth";
+}
+
 function getNumber(inputElement) {
   return Number(inputElement.value.trim());
 }
@@ -167,27 +175,29 @@ function getMotivationMessage(zoneName, safeMisses, classesNeeded) {
   return `Recovery is needed. You may need to attend ${classesNeeded} upcoming class(es) to reach your target.`;
 }
 
-function popCalculatorShell() {
+function focusCalculatorShell() {
   if (!calculatorShell) {
     return;
   }
 
   calculatorShell.classList.remove("planner-pop");
 
-  void calculatorShell.offsetWidth;
-
-  calculatorShell.classList.add("planner-pop");
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      calculatorShell.classList.add("planner-pop");
+    });
+  });
 }
 
 function liftResultCard() {
   resultCard.classList.remove("result-animate");
 
-  void resultCard.offsetWidth;
-
-  resultCard.classList.add("result-animate");
+  requestAnimationFrame(function () {
+    resultCard.classList.add("result-animate");
+  });
 
   resultCard.scrollIntoView({
-    behavior: "smooth",
+    behavior: getSmoothBehavior(),
     block: "center"
   });
 }
@@ -279,7 +289,7 @@ function handleFormSubmit(event) {
 
     calculateBtn.classList.remove("is-loading");
     calculateBtn.disabled = false;
-  }, 250);
+  }, 180);
 }
 
 function resetCalculator() {
@@ -320,13 +330,13 @@ function toggleTheme() {
 
 function startPlanning() {
   calculatorSection.scrollIntoView({
-    behavior: "smooth",
+    behavior: getSmoothBehavior(),
     block: "start"
   });
 
   setTimeout(function () {
-    popCalculatorShell();
-  }, 550);
+    focusCalculatorShell();
+  }, isMobileDevice() ? 420 : 520);
 }
 
 form.addEventListener("submit", handleFormSubmit);
