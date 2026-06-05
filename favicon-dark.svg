@@ -1,7 +1,19 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="18" fill="#070A16"/>
-  <rect x="5" y="5" width="54" height="54" rx="16" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
-  <path d="M47.5 20.5C43.9 14.9 37.6 11.2 30.5 11.2C19.1 11.2 9.9 20.4 9.9 31.8C9.9 43.2 19.1 52.4 30.5 52.4C37.8 52.4 44.2 48.6 47.8 42.9" stroke="#22C55E" stroke-width="4.2" stroke-linecap="round"/>
-  <text x="13.8" y="39.2" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" letter-spacing="-1.8" fill="#F8FAFC">LS</text>
-  <path d="M42.5 38L47.2 42.7L56 32.8" stroke="#22C55E" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="132" fill="#070A16"/>
+  <rect x="38" y="38" width="436" height="436" rx="112" fill="#0F172A"/>
+  <rect x="38" y="38" width="436" height="436" rx="112" stroke="#1E293B" stroke-width="10"/>
+  
+  <text
+    x="256"
+    y="302"
+    text-anchor="middle"
+    font-family="Inter, Arial, Helvetica, sans-serif"
+    font-size="178"
+    font-weight="850"
+    letter-spacing="-18"
+    fill="#F8FAFC"
+  >LS</text>
+
+  <circle cx="382" cy="138" r="39" fill="#22C55E"/>
+  <circle cx="382" cy="138" r="58" stroke="#22C55E" stroke-opacity="0.22" stroke-width="12"/>
 </svg>
