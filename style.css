@@ -180,17 +180,41 @@ a {
   height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  color: white;
-  background: linear-gradient(135deg, var(--primary), var(--cyan));
-  box-shadow: 0 12px 34px rgba(139, 92, 246, 0.38);
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 14px;
   overflow: hidden;
 }
 
-.brand-logo-icon svg {
-  width: 26px;
-  height: 26px;
+.brand-logo-icon .lecture-logo {
+  width: 40px;
+  height: 40px;
   display: block;
+}
+
+.logo-outer {
+  fill: #ffffff;
+}
+
+.logo-panel {
+  fill: #f8fafc;
+}
+
+.logo-l {
+  stroke: #0f172a;
+}
+
+html.dark-mode .logo-outer {
+  fill: #060914;
+}
+
+html.dark-mode .logo-panel {
+  fill: #0f172a;
+}
+
+html.dark-mode .logo-l {
+  stroke: #f8fafc;
 }
 
 .brand-text {
@@ -1142,9 +1166,9 @@ html.dark-mode .input-group input {
     border-radius: 13px;
   }
 
-  .brand-logo-icon svg {
-    width: 23px;
-    height: 23px;
+  .brand-logo-icon .lecture-logo {
+    width: 34px;
+    height: 34px;
   }
 
   .brand-text {
@@ -1347,7 +1371,6 @@ html.dark-mode .input-group input {
     line-height: 1.55;
   }
 
-  /* mobile headings left aligned */
   .form-card .card-heading,
   .result-card .card-heading {
     align-items: flex-start;
