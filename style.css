@@ -1424,3 +1424,114 @@ html.dark-mode .input-group input {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   Final Polish Update
+   Shine + instant focus + mobile heading center
+========================= */
+
+/* Calculate button shine back */
+.calculate-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-130%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.38),
+    transparent
+  );
+  pointer-events: none;
+  will-change: transform;
+}
+
+.calculate-btn:hover::before {
+  animation: buttonShine 0.8s ease;
+}
+
+@keyframes buttonShine {
+  to {
+    transform: translateX(130%);
+  }
+}
+
+/* Ready / Safe / Warning / Recovery badge shine back */
+.zone-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-140%);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.34),
+    transparent
+  );
+  pointer-events: none;
+  will-change: transform;
+}
+
+.zone-badge.neutral::before,
+.zone-badge.safe::before,
+.zone-badge.warning::before,
+.zone-badge.danger::before {
+  animation: badgeShine 3s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+  0% {
+    transform: translateX(-140%);
+  }
+
+  45% {
+    transform: translateX(140%);
+  }
+
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+/* Start Calculating par instant lightweight focus */
+.calculator-shell {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.calculator-shell.planner-pop {
+  border-color: rgba(139, 92, 246, 0.9) !important;
+  box-shadow:
+    0 0 0 5px rgba(139, 92, 246, 0.14),
+    0 18px 55px rgba(139, 92, 246, 0.18) !important;
+}
+
+/* Phone par Attendance Details / Result Summary center */
+@media (max-width: 768px) {
+  .form-card .card-heading,
+  .result-card .card-heading {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .form-card .card-heading > div,
+  .result-card .card-heading > div {
+    width: 100%;
+    text-align: center !important;
+  }
+
+  .result-card .card-heading .zone-badge {
+    align-self: center;
+  }
+
+  /* Mobile par shine rakhi hai but light, taaki smoothness kharab na ho */
+  .calculate-btn::before {
+    display: none;
+  }
+
+  .zone-badge::before {
+    animation-duration: 4.2s;
+  }
+
+  .calculator-shell.planner-pop {
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12) !important;
+  }
+}
