@@ -49,30 +49,56 @@
     <nav class="nav-card">
       <a href="#" class="brand" aria-label="LectureSafe Home">
         <span class="brand-logo brand-logo-icon" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none">
-            <!-- cap -->
-            <path d="M8 17L18 12L28 17L18 22L8 17Z" fill="#22C55E"/>
-            <path d="M12 19H24L21 21H15L12 19Z" fill="#16A34A"/>
-            <path d="M28 17V22" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="28" cy="24" r="1.5" fill="#22C55E"/>
+          <svg class="lecture-logo" viewBox="0 0 512 512" fill="none">
+            <rect class="logo-outer" width="512" height="512" rx="128"/>
 
-            <!-- L -->
+            <rect class="logo-panel" x="36" y="36" width="440" height="440" rx="112"/>
+            <rect x="36" y="36" width="440" height="440" rx="112" stroke="url(#navBorder)" stroke-width="10"/>
+
             <path
-              d="M18 22V40C18 46 22 50 28 50H45"
-              stroke="white"
-              stroke-width="7"
+              class="logo-l"
+              d="M155 126V316C155 357 181 383 222 383H356"
+              stroke-width="64"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
 
-            <!-- safe curve -->
             <path
-              d="M43 25C40 22 34 23 32 26C30 29 33 31 37 32C42 33 45 35 43 39C41 43 34 44 31 40"
+              d="M338 202C318 184 279 188 264 212C250 236 271 249 304 255C338 261 356 277 347 303C337 332 292 336 266 309"
               stroke="#22C55E"
-              stroke-width="3.1"
+              stroke-width="25"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
+
+            <path
+              d="M326 118L382 90L438 118L382 146L326 118Z"
+              fill="#22C55E"
+            />
+
+            <path
+              d="M356 143H408"
+              stroke="#22C55E"
+              stroke-width="13"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M438 118V150"
+              stroke="#22C55E"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+
+            <circle cx="438" cy="158" r="7" fill="#22C55E"/>
+
+            <defs>
+              <linearGradient id="navBorder" x1="52" y1="52" x2="460" y2="460" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7C3AED"/>
+                <stop offset="0.52" stop-color="#2563EB"/>
+                <stop offset="1" stop-color="#0891B2"/>
+              </linearGradient>
+            </defs>
           </svg>
         </span>
 
@@ -91,7 +117,6 @@
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero-section">
       <div class="hero-center">
         <div class="hero-badge">
@@ -145,7 +170,6 @@
       </div>
     </section>
 
-    <!-- Moving strip -->
     <section class="motivation-strip">
       <div class="motivation-track">
         <span>Calculate attendance responsibly.</span>
@@ -161,7 +185,6 @@
       </div>
     </section>
 
-    <!-- Calculator -->
     <section id="calculator" class="calculator-section">
       <div class="section-heading">
         <p>Attendance Calculator</p>
@@ -286,7 +309,6 @@
       </div>
     </section>
 
-    <!-- Info -->
     <section class="info-section">
       <div class="info-card">
         <span>01</span>
@@ -307,7 +329,6 @@
       </div>
     </section>
 
-    <!-- Disclaimer -->
     <section class="disclaimer-section">
       <div class="disclaimer-card">
         <h2>Important Disclaimer</h2>
