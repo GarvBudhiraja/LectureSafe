@@ -36,14 +36,6 @@ const startPlanningBtn = document.getElementById("startPlanningBtn");
 const calculatorSection = document.getElementById("calculator");
 const calculatorShell = document.getElementById("calculatorShell");
 
-function isMobileDevice() {
-  return window.matchMedia("(max-width: 768px)").matches;
-}
-
-function getScrollBehavior() {
-  return isMobileDevice() ? "auto" : "smooth";
-}
-
 function getNumber(inputElement) {
   return Number(inputElement.value.trim());
 }
@@ -195,7 +187,7 @@ function liftResultCard() {
   resultCard.classList.add("result-animate");
 
   resultCard.scrollIntoView({
-    behavior: getScrollBehavior(),
+    behavior: "smooth",
     block: "center"
   });
 }
@@ -328,13 +320,13 @@ function toggleTheme() {
 
 function startPlanning() {
   calculatorSection.scrollIntoView({
-    behavior: getScrollBehavior(),
+    behavior: "smooth",
     block: "start"
   });
 
   setTimeout(function () {
     popCalculatorShell();
-  }, isMobileDevice() ? 80 : 450);
+  }, 550);
 }
 
 form.addEventListener("submit", handleFormSubmit);
