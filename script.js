@@ -31,17 +31,58 @@ const resetBtn = document.getElementById("resetBtn");
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
 const themeText = document.getElementById("themeText");
+const dynamicFavicon = document.getElementById("dynamicFavicon");
+const themeColorMeta = document.getElementById("themeColorMeta");
 
 const startPlanningBtn = document.getElementById("startPlanningBtn");
 const calculatorSection = document.getElementById("calculator");
 const calculatorShell = document.getElementById("calculatorShell");
 
-function isMobileDevice() {
-  return window.matchMedia("(max-width: 768px)").matches;
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+let userChangedTheme = false;
+
+function isDarkMode() {
+  return document.documentElement.classList.contains("dark-mode");
 }
 
-function getSmoothBehavior() {
-  return "smooth";
+function applyTheme(isDark) {
+  document.documentElement.classList.toggle("dark-mode", isDark);
+  updateThemeButton();
+  updateFavicon();
+  updateThemeColor();
+}
+
+function updateThemeButton() {
+  const dark = isDarkMode();
+
+  themeIcon.textContent = dark ? "☀️" : "🌙";
+  themeText.textContent = dark ? "Light" : "Dark";
+}
+
+function updateFavicon() {
+  if (!dynamicFavicon) {
+    return;
+  }
+
+  dynamicFavicon.href = isDarkMode()
+    ? "favicon-dark.svg"
+    : "favicon-light.svg";
+}
+
+function updateThemeColor() {
+  if (!themeColorMeta) {
+    return;
+  }
+
+  themeColorMeta.setAttribute(
+    "content",
+    isDarkMode() ? "#070a16" : "#f7f8ff"
+  );
+}
+
+function toggleTheme() {
+  userChangedTheme = true;
+  applyTheme(!isDarkMode());
 }
 
 function getNumber(inputElement) {
@@ -183,9 +224,11 @@ function focusCalculatorShell() {
   calculatorShell.classList.remove("planner-pop");
 
   requestAnimationFrame(function () {
-    requestAnimationFrame(function () {
-      calculatorShell.classList.add("planner-pop");
-    });
+    calculatorShell.classList.add("planner-pop");
+
+    window.setTimeout(function () {
+      calculatorShell.classList.remove("planner-pop");
+    }, 520);
   });
 }
 
@@ -194,10 +237,14 @@ function liftResultCard() {
 
   requestAnimationFrame(function () {
     resultCard.classList.add("result-animate");
+
+    window.setTimeout(function () {
+      resultCard.classList.remove("result-animate");
+    }, 500);
   });
 
   resultCard.scrollIntoView({
-    behavior: getSmoothBehavior(),
+    behavior: "smooth",
     block: "center"
   });
 }
@@ -284,12 +331,12 @@ function handleFormSubmit(event) {
   calculateBtn.classList.add("is-loading");
   calculateBtn.disabled = true;
 
-  setTimeout(function () {
+  window.setTimeout(function () {
     calculateAttendance();
 
     calculateBtn.classList.remove("is-loading");
     calculateBtn.disabled = false;
-  }, 180);
+  }, 160);
 }
 
 function resetCalculator() {
@@ -316,27 +363,15 @@ function resetCalculator() {
   resultCard.classList.remove("result-animate");
 }
 
-function updateThemeButton() {
-  const isDark = document.body.classList.contains("dark-mode");
-
-  themeIcon.textContent = isDark ? "☀️" : "🌙";
-  themeText.textContent = isDark ? "Light" : "Dark";
-}
-
-function toggleTheme() {
-  document.body.classList.toggle("dark-mode");
-  updateThemeButton();
-}
-
 function startPlanning() {
   calculatorSection.scrollIntoView({
-    behavior: getSmoothBehavior(),
+    behavior: "smooth",
     block: "start"
   });
 
-  setTimeout(function () {
+  window.setTimeout(function () {
     focusCalculatorShell();
-  }, isMobileDevice() ? 420 : 520);
+  }, 360);
 }
 
 form.addEventListener("submit", handleFormSubmit);
@@ -347,4 +382,10 @@ if (startPlanningBtn) {
   startPlanningBtn.addEventListener("click", startPlanning);
 }
 
-updateThemeButton();
+systemTheme.addEventListener("change", function (event) {
+  if (!userChangedTheme) {
+    applyTheme(event.matches);
+  }
+});
+
+applyTheme(systemTheme.matches);
