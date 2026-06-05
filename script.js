@@ -1,6 +1,6 @@
 /* =========================
    LectureSafe
-   Private static attendance planner
+   Private static attendance calculator
    No API, no database, no cookies, no localStorage, no file access
 ========================= */
 
@@ -63,7 +63,7 @@ function validateInputs(requiredPercentage, totalHeld, attended) {
   }
 
   if (requiredPercentage <= 0 || requiredPercentage > 100) {
-    return "Minimum attendance criteria must be between 1 and 100.";
+    return "Minimum attendance percentage must be between 1 and 100.";
   }
 
   if (totalHeld <= 0) {
@@ -90,9 +90,9 @@ function getZone(currentPercentage, requiredPercentage) {
     return {
       name: "Safe Zone",
       className: "safe",
-      status: "You are safe right now.",
+      status: "You are above the required attendance target.",
       advice:
-        "Your attendance is equal to or above the minimum attendance criteria. Keep planning responsibly."
+        "Your current attendance is equal to or above the required percentage. Keep checking before missing any class."
     };
   }
 
@@ -100,18 +100,18 @@ function getZone(currentPercentage, requiredPercentage) {
     return {
       name: "Warning Zone",
       className: "warning",
-      status: "You are close, but not fully safe.",
+      status: "You are close to the required target.",
       advice:
-        "Your attendance is close to the minimum criteria. Try to attend upcoming classes to stay on the safe side."
+        "Your attendance is close to the required percentage. Attend upcoming classes to move back into the safe zone."
     };
   }
 
   return {
-    name: "Danger Zone",
+    name: "Recovery Needed",
     className: "danger",
-    status: "You need to recover your attendance.",
+    status: "You are below the required attendance target.",
     advice:
-      "Your attendance is below the safe range. Attend upcoming classes regularly to reduce shortage risk."
+      "Your attendance is below the required percentage. Regular attendance is needed to recover."
   };
 }
 
@@ -154,17 +154,17 @@ function calculateSafeMissesFromNow(requiredPercentage, totalHeld, attended) {
 function getMotivationMessage(zoneName, safeMisses, classesNeeded) {
   if (zoneName === "Safe Zone") {
     if (safeMisses === 0) {
-      return "You are safe, but very close to the boundary. Missing one more class may put you below your target.";
+      return "You are safe right now, but very close to the boundary. Missing one class may reduce your attendance below target.";
     }
 
-    return `You can still miss about ${safeMisses} upcoming class(es), but always confirm with official records.`;
+    return `You can safely miss about ${safeMisses} upcoming class(es), but always confirm with official records.`;
   }
 
   if (zoneName === "Warning Zone") {
     return `Attend at least ${classesNeeded} upcoming class(es) to reach your target.`;
   }
 
-  return `Recovery is needed. You may need to attend ${classesNeeded} upcoming class(es) to reach the target.`;
+  return `Recovery is needed. You may need to attend ${classesNeeded} upcoming class(es) to reach your target.`;
 }
 
 function popCalculatorShell() {
