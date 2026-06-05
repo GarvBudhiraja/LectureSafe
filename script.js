@@ -55,9 +55,11 @@ function updateThemeButton() {
 function updateFavicon() {
   if (!dynamicFavicon) return;
 
+  const version = "v=22";
+
   dynamicFavicon.href = isDarkMode()
-    ? "favicon-dark.svg"
-    : "favicon-light.svg";
+    ? `favicon-dark.svg?${version}`
+    : `favicon-light.svg?${version}`;
 }
 
 function updateThemeColor() {
