@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -10,10 +9,11 @@
 
   <script>
     (function () {
-      var systemDark = window.matchMedia &&
+      var prefersDark =
+        window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      if (systemDark) {
+      if (prefersDark) {
         document.documentElement.classList.add("dark-mode");
       }
     })();
@@ -21,17 +21,18 @@
 
   <title>LectureSafe - Attendance Calculator</title>
 
-  <link id="dynamicFavicon" rel="icon" href="favicon-dark.svg" type="image/svg+xml" />
-
-  <meta
-    id="themeColorMeta"
-    name="theme-color"
-    content="#070a16"
-  />
-
   <meta
     name="description"
-    content="LectureSafe is a private attendance calculator that helps students check attendance percentage, safe misses, and classes needed to reach their target."
+    content="LectureSafe is a private attendance calculator for students to check attendance percentage, safe misses, and target recovery classes."
+  />
+
+  <meta id="themeColorMeta" name="theme-color" content="#070a16" />
+
+  <link
+    id="dynamicFavicon"
+    rel="icon"
+    href="favicon-dark.svg"
+    type="image/svg+xml"
   />
 
   <link rel="stylesheet" href="style.css" />
@@ -47,7 +48,34 @@
   <header class="topbar">
     <nav class="nav-card">
       <a href="#" class="brand" aria-label="LectureSafe Home">
-        <span class="brand-logo">L</span>
+        <span class="brand-logo brand-logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none">
+            <!-- cap -->
+            <path d="M8 17L18 12L28 17L18 22L8 17Z" fill="#22C55E"/>
+            <path d="M12 19H24L21 21H15L12 19Z" fill="#16A34A"/>
+            <path d="M28 17V22" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="28" cy="24" r="1.5" fill="#22C55E"/>
+
+            <!-- L -->
+            <path
+              d="M18 22V40C18 46 22 50 28 50H45"
+              stroke="white"
+              stroke-width="7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <!-- safe curve -->
+            <path
+              d="M43 25C40 22 34 23 32 26C30 29 33 31 37 32C42 33 45 35 43 39C41 43 34 44 31 40"
+              stroke="#22C55E"
+              stroke-width="3.1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+
         <span class="brand-text">LectureSafe</span>
       </a>
 
@@ -63,6 +91,7 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero-section">
       <div class="hero-center">
         <div class="hero-badge">
@@ -76,8 +105,8 @@
         </h1>
 
         <p class="hero-subtitle">
-          Calculate your current attendance, check how many classes you can safely miss,
-          and see how many classes you need to attend to reach your target.
+          Calculate your current attendance, check safe misses, and know how many
+          classes you need to attend to reach your target.
         </p>
 
         <div class="hero-points">
@@ -97,8 +126,8 @@
           </div>
 
           <div class="point-card">
-            <strong>Target Classes</strong>
-            <span>See recovery requirement</span>
+            <strong>Fast Result</strong>
+            <span>Instant calculation</span>
           </div>
         </div>
 
@@ -116,21 +145,23 @@
       </div>
     </section>
 
+    <!-- Moving strip -->
     <section class="motivation-strip">
       <div class="motivation-track">
-        <span>Calculate attendance accurately.</span>
-        <span>Check safe misses responsibly.</span>
+        <span>Calculate attendance responsibly.</span>
+        <span>Check safe misses smartly.</span>
         <span>Use official records for best accuracy.</span>
         <span>Stay above your attendance target.</span>
         <span>Your data never leaves your browser.</span>
-        <span>Calculate attendance accurately.</span>
-        <span>Check safe misses responsibly.</span>
+        <span>Calculate attendance responsibly.</span>
+        <span>Check safe misses smartly.</span>
         <span>Use official records for best accuracy.</span>
         <span>Stay above your attendance target.</span>
         <span>Your data never leaves your browser.</span>
       </div>
     </section>
 
+    <!-- Calculator -->
     <section id="calculator" class="calculator-section">
       <div class="section-heading">
         <p>Attendance Calculator</p>
@@ -150,9 +181,7 @@
           </div>
 
           <div class="input-group">
-            <label for="requiredPercentage">
-              Minimum attendance percentage required
-            </label>
+            <label for="requiredPercentage">Minimum attendance percentage required</label>
             <input
               id="requiredPercentage"
               type="number"
@@ -201,7 +230,7 @@
           <div class="privacy-box">
             <strong>Private by Design</strong>
             <p>
-              No login. No API. No tracking. Your attendance numbers are calculated only inside your browser.
+              No login. No API. No tracking. Your numbers are calculated only inside your browser.
             </p>
           </div>
         </form>
@@ -212,6 +241,7 @@
               <p>Result Summary</p>
               <h3>Attendance Status</h3>
             </div>
+
             <span id="zoneBadge" class="zone-badge neutral">Ready</span>
           </div>
 
@@ -256,32 +286,28 @@
       </div>
     </section>
 
+    <!-- Info -->
     <section class="info-section">
       <div class="info-card">
         <span>01</span>
         <h3>Safe Zone</h3>
-        <p>
-          Your attendance is equal to or above the required percentage.
-        </p>
+        <p>Your attendance is equal to or above the required percentage.</p>
       </div>
 
       <div class="info-card">
         <span>02</span>
         <h3>Safe Misses</h3>
-        <p>
-          Shows how many upcoming classes you can miss without going below your target.
-        </p>
+        <p>Shows how many upcoming classes you can still miss without going below your target.</p>
       </div>
 
       <div class="info-card">
         <span>03</span>
         <h3>Recovery Classes</h3>
-        <p>
-          If your attendance is low, it shows how many classes you need to attend to recover.
-        </p>
+        <p>If your attendance is low, it shows how many classes you need to attend to recover.</p>
       </div>
     </section>
 
+    <!-- Disclaimer -->
     <section class="disclaimer-section">
       <div class="disclaimer-card">
         <h2>Important Disclaimer</h2>
