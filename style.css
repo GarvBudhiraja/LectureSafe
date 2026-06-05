@@ -1508,3 +1508,32 @@ html.dark-mode .input-group input {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   Mobile Only Heading Center Fix
+========================= */
+
+@media (max-width: 768px) {
+  .form-card .card-heading,
+  .result-card .card-heading {
+    align-items: center !important;
+    text-align: center !important;
+    flex-direction: column !important;
+  }
+
+  .form-card .card-heading > div,
+  .result-card .card-heading > div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .form-card .card-heading p,
+  .form-card .card-heading h3,
+  .result-card .card-heading p,
+  .result-card .card-heading h3 {
+    text-align: center !important;
+  }
+
+  .result-card .card-heading .zone-badge {
+    align-self: center !important;
+  }
+}
