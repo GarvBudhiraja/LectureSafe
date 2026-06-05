@@ -1494,3 +1494,125 @@ body.dark-mode .input-group input {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   Premium Zone Badge Styling
+   Ready + Safe + Warning + Recovery
+========================= */
+
+.zone-badge {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent !important;
+  letter-spacing: 0.01em;
+  box-shadow: none;
+}
+
+.zone-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.38),
+    transparent
+  );
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.zone-badge.safe::before,
+.zone-badge.warning::before,
+.zone-badge.danger::before,
+.zone-badge.neutral::before {
+  animation: badgeShine 2.8s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+  0% {
+    transform: translateX(-130%);
+  }
+
+  45% {
+    transform: translateX(130%);
+  }
+
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+/* Ready Badge */
+.zone-badge.neutral {
+  color: #e0f2fe !important;
+  background: linear-gradient(135deg, #64748b, #334155, #0f172a) !important;
+  border-color: rgba(148, 163, 184, 0.65) !important;
+  box-shadow:
+    0 0 0 4px rgba(148, 163, 184, 0.12),
+    0 0 18px rgba(148, 163, 184, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Safe Zone Badge */
+.zone-badge.safe {
+  color: #052e16 !important;
+  background: linear-gradient(135deg, #bbf7d0, #4ade80, #16a34a) !important;
+  border-color: rgba(134, 239, 172, 0.9) !important;
+  box-shadow:
+    0 0 0 4px rgba(34, 197, 94, 0.16),
+    0 0 24px rgba(34, 197, 94, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Warning Zone Badge */
+.zone-badge.warning {
+  color: #451a03 !important;
+  background: linear-gradient(135deg, #fef3c7, #fbbf24, #d97706) !important;
+  border-color: rgba(253, 230, 138, 0.9) !important;
+  box-shadow:
+    0 0 0 4px rgba(245, 158, 11, 0.15),
+    0 0 24px rgba(245, 158, 11, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Recovery Needed Badge */
+.zone-badge.danger {
+  color: #fff7ed !important;
+  background: linear-gradient(135deg, #fb7185, #ef4444, #991b1b) !important;
+  border-color: rgba(251, 113, 133, 0.9) !important;
+  box-shadow:
+    0 0 0 4px rgba(239, 68, 68, 0.15),
+    0 0 24px rgba(239, 68, 68, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+}
+
+/* Mobile par light glow rakha hai, lag nahi karega */
+@media (max-width: 768px) {
+  .zone-badge::before {
+    animation: none !important;
+  }
+
+  .zone-badge.neutral {
+    box-shadow:
+      0 0 0 3px rgba(148, 163, 184, 0.1),
+      0 0 12px rgba(148, 163, 184, 0.2) !important;
+  }
+
+  .zone-badge.safe {
+    box-shadow:
+      0 0 0 3px rgba(34, 197, 94, 0.12),
+      0 0 14px rgba(34, 197, 94, 0.28) !important;
+  }
+
+  .zone-badge.warning {
+    box-shadow:
+      0 0 0 3px rgba(245, 158, 11, 0.12),
+      0 0 14px rgba(245, 158, 11, 0.25) !important;
+  }
+
+  .zone-badge.danger {
+    box-shadow:
+      0 0 0 3px rgba(239, 68, 68, 0.12),
+      0 0 14px rgba(239, 68, 68, 0.25) !important;
+  }
+}
