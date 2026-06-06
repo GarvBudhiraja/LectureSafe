@@ -380,4 +380,42 @@ systemTheme.addEventListener("change", function (event) {
   }
 });
 
+
 applyTheme(systemTheme.matches);
+
+// --- Custom PWA Install Prompt ---
+let deferredPrompt;
+const installAppBtn = document.getElementById('installAppBtn');
+
+// Intercept the native install prompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  if (installAppBtn) {
+    installAppBtn.style.display = 'inline-flex';
+  }
+});
+
+// Handle custom install button click
+if (installAppBtn) {
+  installAppBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    
+    if (outcome === 'accepted') {
+      installAppBtn.style.display = 'none';
+    }
+    deferredPrompt = null;
+  });
+}
+
+// Cleanup if installed externally
+window.addEventListener('appinstalled', () => {
+  if (installAppBtn) {
+    installAppBtn.style.display = 'none';
+  }
+  deferredPrompt = null;
+});
