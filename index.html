@@ -2,17 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <script>
     (function () {
-      var prefersDark =
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
-
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (prefersDark) {
         document.documentElement.classList.add("dark-mode");
       }
@@ -21,20 +15,16 @@
 
   <title>LectureSafe - Attendance Calculator</title>
 
-  <meta
-    name="description"
-    content="LectureSafe is a private attendance calculator for students to check attendance percentage, safe misses, and target recovery classes."
-  />
-
+  <meta name="description" content="LectureSafe is a private attendance calculator for students to check attendance percentage, safe misses, and target recovery classes." />
   <meta id="themeColorMeta" name="theme-color" content="#070a16" />
 
-  <link
-    id="dynamicFavicon"
-    rel="icon"
-    href="favicon-dark.svg"
-    type="image/svg+xml"
-  />
+  <!-- PWA Setup -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LectureSafe" />
 
+  <link id="dynamicFavicon" rel="icon" href="favicon-dark.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -51,47 +41,14 @@
         <span class="brand-logo brand-logo-icon" aria-hidden="true">
           <svg class="lecture-logo" viewBox="0 0 512 512" fill="none">
             <rect class="logo-outer" width="512" height="512" rx="128"/>
-
             <rect class="logo-panel" x="36" y="36" width="440" height="440" rx="112"/>
             <rect x="36" y="36" width="440" height="440" rx="112" stroke="url(#navBorder)" stroke-width="10"/>
-
-            <path
-              class="logo-l"
-              d="M155 126V316C155 357 181 383 222 383H356"
-              stroke-width="64"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-
-            <path
-              d="M338 202C318 184 279 188 264 212C250 236 271 249 304 255C338 261 356 277 347 303C337 332 292 336 266 309"
-              stroke="#22C55E"
-              stroke-width="25"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-
-            <path
-              d="M326 118L382 90L438 118L382 146L326 118Z"
-              fill="#22C55E"
-            />
-
-            <path
-              d="M356 143H408"
-              stroke="#22C55E"
-              stroke-width="13"
-              stroke-linecap="round"
-            />
-
-            <path
-              d="M438 118V150"
-              stroke="#22C55E"
-              stroke-width="8"
-              stroke-linecap="round"
-            />
-
+            <path class="logo-l" d="M155 126V316C155 357 181 383 222 383H356" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M338 202C318 184 279 188 264 212C250 236 271 249 304 255C338 261 356 277 347 303C337 332 292 336 266 309" stroke="#22C55E" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M326 118L382 90L438 118L382 146L326 118Z" fill="#22C55E" />
+            <path d="M356 143H408" stroke="#22C55E" stroke-width="13" stroke-linecap="round" />
+            <path d="M438 118V150" stroke="#22C55E" stroke-width="8" stroke-linecap="round" />
             <circle cx="438" cy="158" r="7" fill="#22C55E"/>
-
             <defs>
               <linearGradient id="navBorder" x1="52" y1="52" x2="460" y2="460" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#7C3AED"/>
@@ -101,13 +58,11 @@
             </defs>
           </svg>
         </span>
-
         <span class="brand-text">LectureSafe</span>
       </a>
 
       <div class="nav-actions">
         <span class="safe-chip">Private Calculator</span>
-
         <button id="themeToggle" class="theme-btn" type="button">
           <span id="themeIcon">☀️</span>
           <span id="themeText">Light</span>
@@ -123,45 +78,37 @@
           <span class="live-dot"></span>
           Student-friendly attendance calculator
         </div>
-
         <h1 class="hero-title">
           <span class="title-main">Lecture</span><span class="title-accent">Safe</span>
           <small>Attendance Calculator</small>
         </h1>
-
         <p class="hero-subtitle">
           Calculate your current attendance, check safe misses, and know how many
           classes you need to attend to reach your target.
         </p>
-
         <div class="hero-points">
           <div class="point-card">
             <strong>No Login</strong>
             <span>No account required</span>
           </div>
-
           <div class="point-card">
             <strong>Private</strong>
             <span>Your data stays in browser</span>
           </div>
-
           <div class="point-card">
             <strong>Safe Misses</strong>
             <span>Know your safe limit</span>
           </div>
-
           <div class="point-card">
             <strong>Fast Result</strong>
             <span>Instant calculation</span>
           </div>
         </div>
-
         <div class="hero-action-wrap">
           <div class="start-mini-popup">
             <span class="popup-dot"></span>
             Check your attendance and safe misses
           </div>
-
           <button id="startPlanningBtn" class="hero-btn" type="button">
             Start Calculating
             <span>↓</span>
@@ -189,9 +136,7 @@
       <div class="section-heading">
         <p>Attendance Calculator</p>
         <h2>Check your safe misses</h2>
-        <span>
-          Enter your target percentage and current lecture count to calculate your attendance status.
-        </span>
+        <span>Enter your target percentage and current lecture count to calculate your attendance status.</span>
       </div>
 
       <div id="calculatorShell" class="calculator-shell">
@@ -205,36 +150,17 @@
 
           <div class="input-group">
             <label for="requiredPercentage">Minimum attendance percentage required</label>
-            <input
-              id="requiredPercentage"
-              type="number"
-              min="1"
-              max="100"
-              step="0.1"
-              placeholder="Example: 75, 80, 90"
-            />
+            <input id="requiredPercentage" type="number" min="1" max="100" step="0.1" placeholder="Example: 75, 80, 90" />
           </div>
 
           <div class="input-group">
             <label for="totalHeld">Total lectures/classes held so far</label>
-            <input
-              id="totalHeld"
-              type="number"
-              min="1"
-              step="1"
-              placeholder="Example: 20"
-            />
+            <input id="totalHeld" type="number" min="1" step="1" placeholder="Example: 20" />
           </div>
 
           <div class="input-group">
             <label for="attended">Lectures/classes attended so far</label>
-            <input
-              id="attended"
-              type="number"
-              min="0"
-              step="1"
-              placeholder="Example: 18"
-            />
+            <input id="attended" type="number" min="0" step="1" placeholder="Example: 18" />
           </div>
 
           <div id="errorBox" class="error-box"></div>
@@ -244,17 +170,12 @@
               <span class="btn-text">Calculate Result</span>
               <span class="btn-loader"></span>
             </button>
-
-            <button id="resetBtn" class="reset-btn" type="button">
-              Reset
-            </button>
+            <button id="resetBtn" class="reset-btn" type="button">Reset</button>
           </div>
 
           <div class="privacy-box">
             <strong>Private by Design</strong>
-            <p>
-              No login. No API. No tracking. Your numbers are calculated only inside your browser.
-            </p>
+            <p>No login. No API. No tracking. Your numbers are calculated only inside your browser.</p>
           </div>
         </form>
 
@@ -264,7 +185,6 @@
               <p>Result Summary</p>
               <h3>Attendance Status</h3>
             </div>
-
             <span id="zoneBadge" class="zone-badge neutral">Ready</span>
           </div>
 
@@ -279,7 +199,6 @@
               <span>Attendance Progress</span>
               <strong id="progressLabel">0%</strong>
             </div>
-
             <div class="progress-track">
               <div id="progressFill" class="progress-fill"></div>
             </div>
@@ -290,12 +209,10 @@
               <span>Classes missed so far</span>
               <strong id="missedClasses">--</strong>
             </div>
-
             <div class="stat-card">
               <span>Safe misses available</span>
               <strong id="safeMisses">--</strong>
             </div>
-
             <div class="stat-card wide">
               <span>Classes needed to reach target</span>
               <strong id="neededClasses">--</strong>
@@ -315,13 +232,11 @@
         <h3>Safe Zone</h3>
         <p>Your attendance is equal to or above the required percentage.</p>
       </div>
-
       <div class="info-card">
         <span>02</span>
         <h3>Safe Misses</h3>
         <p>Shows how many upcoming classes you can still miss without going below your target.</p>
       </div>
-
       <div class="info-card">
         <span>03</span>
         <h3>Recovery Classes</h3>
@@ -345,5 +260,16 @@
   </footer>
 
   <script src="script.js"></script>
+  
+  <!-- Service Worker Registration for PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(registration => console.log('Service Worker Registered Successfully!'))
+          .catch(error => console.error('Service Worker Registration Failed: ', error));
+      });
+    }
+  </script>
 </body>
 </html>
