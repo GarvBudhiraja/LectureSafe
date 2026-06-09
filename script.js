@@ -419,3 +419,18 @@ window.addEventListener('appinstalled', () => {
   }
   deferredPrompt = null;
 });
+
+// --- Entry Animation Trigger ---
+
+window.addEventListener('load', () => {
+ 
+  const hiddenElements = document.querySelectorAll('.animate-hidden');
+
+
+  setTimeout(() => {
+    hiddenElements.forEach((el) => {
+      
+      el.classList.add('entry-animate');
+    });
+  }, 100);
+});
